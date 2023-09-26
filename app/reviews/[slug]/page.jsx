@@ -4,11 +4,11 @@ import Heading from '../../../components/Heading';
 import ShareButtons from '@/components/ShareButtons';
 
 
-export async function generateStaticParams() {
-const slugs = await getSlugs();
-return slugs.map(slug => {{slug}}); 
+// export async function generateStaticParams() {
+// const slugs = await getSlugs();
+// return slugs.map(slug => {{slug}}); 
  
-}
+// }
 
 export  async function generateMetadata({params: {slug}}) {
     const review = await getReview(slug);
