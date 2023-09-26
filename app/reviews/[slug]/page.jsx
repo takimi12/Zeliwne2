@@ -1,12 +1,12 @@
 
 import { getReview } from '@/lib/reviews';
-import Heading from '../../../components/heading';
+import Heading from '../../../components/Heading';
 
 
 
 
-export default async function StardewValleyPage(){
-    const review = await getReview('stardew-valley');
+export default async function ReviewPage({params: {slug}}){
+    const review = await getReview(slug);
 
 return(
         <>
@@ -20,3 +20,4 @@ return(
     </>
     );
 }
+
