@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Heading from "../components/heading";
-import { getFeaturedReview } from "@/lib/reviews";
+import {  getReviews } from "@/lib/reviews";
+import Image from "next/image";
 
 
 
 export default async function HomePage(){
-   const review = await getFeaturedReview();
+   const reviews = await getReviews(3);
 
    
     return(
@@ -14,16 +15,30 @@ export default async function HomePage(){
                     <p className="pb-3">
                         Only the best indie games, reviewed by you. 
                     </p>
-                    <div className=" bg-white border w-80  rounded shadow hover:shadow-xl sm:w-full">
-                <Link href={`/reviews/${review.slug}`}
-                className="flex flex-col sm:flex-row">
-                <img src={review.image} alt="Stardew Valley" 
-       width="320" height="180"
-       className=" rounded-1 sm:rounded-1  sm:rounded-r-none"
-       />       <h2 className=" font-semibold text-center font-orbitron py-1  sm:px-2">{review.page}</h2>
+                    <ul className="flex flex-col gap-3">
+                        {reviews.map((review, index) => (
+                            <li key={review.slug} className="bg-white border w-80  rounded shadow hover:shadow-xl sm:w-full">
+                            <Link href={`/reviews/${review.slug}`}
+                            className="flex flex-col sm:flex-row">
+                            <Image src={review.image} 
+                               alt="" 
+                            priority={ index === 0}
+                         
+                   width="320" height="180"
+                   className=" rounded-t sm:rounded-l  sm:rounded-r-none"
+                   />      
+                   <div className="px-2 py-1 text-center sm:text-left"> 
+                   <h2 className=" font-semibold  font-orbitron ">{review.title}</h2>
+                                <p className="hidden pt-2 sm:block">
+                                    {review.subtitle}
+                                </p>
+                                </div>
+                            </Link>
                     
-                </Link>
-            </div>
+                        </li>
+                        ))}
+                    </ul>
+                    
         </>
     );
 }
