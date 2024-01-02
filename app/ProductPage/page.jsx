@@ -26,14 +26,14 @@ const ProductPageSingle = () => {
     <section className="ProductPage">
   <div className="ProductPageWrapper">
     <div className="ImageWrapper">
-      <Image className="ProductPageImage" src={Product} />
-      <Image className="ProductPageImage" src={Product} />
-      <Image className="ProductPageImage" src={Product} />
-      <Image className="ProductPageImage" src={Product} />
-      <Image className="ProductPageImage" src={Product} />
+      <Image className="ProductPageImage" src={Product} alt="product" />
+      <Image className="ProductPageImage" src={Product} alt="product" />
+      <Image className="ProductPageImage" src={Product} alt="product" />
+      <Image className="ProductPageImage" src={Product} alt="product" />
+      <Image className="ProductPageImage" src={Product} alt="product" />
       <div className="wrapper-small-product">
-        <Image src={smallproduct1} />
-        <Image src={smallproduct2} />
+        <Image src={smallproduct1} alt="product1" />
+        <Image src={smallproduct2} alt="product2"/>
       </div>
     </div>
 

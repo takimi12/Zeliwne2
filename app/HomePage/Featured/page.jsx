@@ -1,17 +1,24 @@
 import React from "react";
 
-const Featured = () => {
+const Featured = ({ data }) => {
+  console.log(data);
+
+  const sectionStyle = {
+    backgroundImage: `url(${data.background.url})`,
+    backgroundSize: 'cover',
+  };
+
   return (
-    <section className="Featured">
-       <div className="text-center">
-        <div className="text-center-setting">
-          
-          <h3 className="display-second">Nowa seria Neptune
-podkreślająca styl Twojego wnętrza</h3>
-          <button className=" button" ><a >Zobacz serię Emmeline</a></button>
-        </div>
+    <section className="Featured" style={sectionStyle}>
+      <div className="text-center-setting">
+        <h3 className="display-second">{data.title}</h3>
+        <button className="button">
+          <a href={data.link.url} target={data.link.target}>
+            {data.link.title}
+          </a>
+        </button>
       </div>
-</section>  
+    </section>
   );
 };
 

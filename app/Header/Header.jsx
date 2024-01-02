@@ -11,6 +11,7 @@ import emmeline from
 "../../public/static/Header/emmeline.png";
 import vulcan from "../../public/static/Header/vulcannavi.png";
 import Image from 'next/image';
+import Link from 'next/link';
 
 const App = () => {
   const [categories, setCategories] = useState([]);
@@ -57,6 +58,40 @@ const App = () => {
   
 
 
+  const [fetchedData, setFetchedData] = useState([]);
+
+  const [fetchedData1, setFetchedData1] = useState([]);
+
+  console.log(fetchedData1, 'pages');
+
+ 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://grzejniki.ergotree.pl/wp-json/wc/v2/pages", {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Basic ' + btoa('ck_15872bdeb29da677c9d69ff7f5e7350b07f23f1f:cs_4d0a58972630690a8ff936d143c60e53f8930def'),
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+  
+        const result = await response.json();
+        setFetchedData1(result);
+  
+        // Reszta Twojego kodu, np. aktualizacja innych stanów...
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
+      }
+    };https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/17
+  
+    fetchData();
+  }, []);
+    
   
   useEffect(() => {
     fetch("https://et2.ergotree.pl/wp-json/custom/v1/navigation")
@@ -119,8 +154,11 @@ const handleThirdLevelMouseEnter = (className) => {
                 setActiveCategoryIndex(-1);
               }
             }}
-          >
+          > 
+          <Link href={category.title} >
             {category.title}
+          </Link>
+            
           </div>
         ))}
       </div>
@@ -181,36 +219,43 @@ const handleThirdLevelMouseEnter = (className) => {
                 className={`Elara Image-left Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-11' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-11')}
                 src={Elara}
+                alt="Elara"
               />
             <Image
   className={`kaloryfer Image-left Image-left-kaloryfer ${isImageVisible && !isKaloryferHidden ? '' : 'hidden'}`}
   src={kaloryfer}
+  alt="kaloryfer"
 
 />
               <Image
                 className={`Florence Image-lef Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-31' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-31')}
                 src={Florence}
+                alt="Florence"
               />
               <Image
                 className={`grace Image-left Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-51' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-51')}
                 src={grace}
+                alt="grace"
               />
               <Image
                 className={`rococo Image-left Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-52' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-52')}
                 src={rococo}
+                alt="rococo"
               />
               <Image
                 className={`Vulkam Image-left Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-53' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-53')}
                 src={vulcan}
+                alt="vulcan"
               />
               <Image
                 className={`Emmeline Image-left Image-left-normal ${isImageVisible && activeThirdLevelIndex === ' third-level-54' ? '' : 'hidden'}`}
                 onMouseEnter={() => handleThirdLevelMouseEnter(' third-level-54')}
                 src={emmeline}
+                alt="emmeline"
               />
             </div>
           </div>

@@ -1,42 +1,40 @@
-
+import React from "react";
 import Image from "next/image";
-import renovationImage from "../../../public/static/HomePage/Photo.png";
 
-const RenovationSection = () => {
-
+const RenovationSection = ({ data }) => {
+  const {
+    small_title,
+    title,
+    description,
+    link,
+    image: { url, alt, sizes },
+  } = data;
 
   return (
-    <>
     <section className="RenovationSection">
       <div className="RenovationSection-content">
         <div className="RenovationSection-text">
           <div className="RenovationSection-title">
-            <span className="body-small-bigger"> 
-            RENOWACJA GRZEJNIKÓW
-            </span>
-            </div>
-          <h6 className="RenovationSection-heading display">
-            Nowe życie dla Twoich grzejników
-          </h6>
-          <div className="RenovationSection-description h6-300">
-            Grzejniki żeliwne to idealne rozwiązanie do wykończenia wnętrz domów,
-            szczególnie w budynkach zabytkowych lub tych o bogatej historii.
-            Jednak jak w przypadku każdego produktu wystawionego na próbę czasu
-            zalecana jest renowacja, która pozwoli Ci przywrócić grzejnik do
-            pełnej sprawności oraz nada mu nowy, niepowtarzalny wygląd.
+            <span className="body-small-bigger">{small_title}</span>
           </div>
-          <a href="/pl/renovation">
+          <h6 className="RenovationSection-heading display">{title}</h6>
+          <div className="RenovationSection-description h6-300">{description}</div>
+          <a href={link.url} target={link.target} rel="noopener noreferrer">
             <button className="RenovationSection-button button" type="button">
-              Dowiedz się więcej 
+              {link.title}
             </button>
           </a>
         </div>
         <div className="RenovationSection-image">
-          <Image src={renovationImage} alt="Renovation" />
+        <Image
+  src={url}
+  alt={alt}
+  layout="fill"
+  objectFit="cover" // lub inne dostępne wartości
+/>
         </div>
       </div>
     </section>
-    </>
   );
 };
 

@@ -11,7 +11,7 @@ const Guarantee = () => {
 <h6 className="second-p h6-300">* Gwarancja nie obejmuje uszkodzeń mechanicznych z winy użytkownika, jak również odbarwień lub odprysków lakieru spowodowanych długotrwałym działaniem czynników zewnętrznych (atmosferycznych) oraz źle dobranych i stosowanych środków czyszczących i konserwujących.</h6>
 </div>
               <div className="col-6">
-                <Image className="ImgGuarantee" src={Guarante} />
+                <Image className="ImgGuarantee" src={Guarante}  alt="gurantee"/>
               </div>
 
       </>

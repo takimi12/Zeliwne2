@@ -20,7 +20,7 @@ const Contact = () => {
                     
                     <div className="ContactDetailsSmall">
                         <div className="Image">
-                        <Image src={ContactIcon} />
+                        <Image src={ContactIcon} alt="contactdetailssmall" />
                         </div>
                         <div className="details">
                             <h6 className="ContactParagraphDetails h6">info@żeliwne.com</h6> 
@@ -29,7 +29,7 @@ const Contact = () => {
                     </div>
                     <div className="ContactDetailsSmall">
                         <div className="Image">
-                        <Image src={ContactIcon} />
+                        <Image src={ContactIcon} alt="contactdetailssmall" />
                         </div>
                         <div className="details">
                             <h6 className="ContactParagraphDetails h6 ">Sprzedaż</h6> 
@@ -40,7 +40,7 @@ const Contact = () => {
                     </div>
                     <div className="ContactDetailsSmall">
                         <div className="Image">
-                        <Image src={ContactIcon} />
+                        <Image src={ContactIcon} alt="contactdetailssmall" />
                         </div>
                         <div className="details">
                             <h6 className="ContactParagraphDetails h6">Pomoc techniczna</h6> 

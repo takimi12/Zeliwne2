@@ -14,6 +14,10 @@
 }
 .ForBusinessTitleText .MainParagraph{
  padding-bottom: 120px;
+ @media only screen and (max-width: 768px) {
+    padding: 0px 16px 120px 16px;
+}
+
 }
 
 .ForBusinessTitleText{

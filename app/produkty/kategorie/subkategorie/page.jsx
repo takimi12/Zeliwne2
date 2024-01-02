@@ -35,7 +35,7 @@ const ProductOneCategorySub = () => {
       <>
 
         <section className="HeroCategorySub">
-          <Image className="HeroSubImageWrapper" src={Header} />
+          <Image className="HeroSubImageWrapper" src={Header} alt="header" />
           <div className="location">
             <p className="body-small-smaller"> <a href="/">Strona Główna</a></p>
             <span> <Image src={breadcrumb} alt="Logo" /></span>

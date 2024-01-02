@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,9 +5,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
-import features from './utils/Data'; 
-
-const FutureSection = () => {
+const FutureSection = ({ data }) => {
   const breakpoints = {
     300: {
       slidesPerView: 1,
@@ -29,8 +25,6 @@ const FutureSection = () => {
     },
   };
 
-
-
   return (
     <section className="FutureSection">
       <Swiper
@@ -42,12 +36,18 @@ const FutureSection = () => {
         slidesOffsetBefore={40}
         breakpoints={breakpoints}
       >
-        {features.map((feature, index) => (
+        {data.map((feature, index) => (
           <SwiperSlide key={index}>
             <div className="Feature">
               <div className="FeatureWrapper">
                 <div className="FeatureIcon">
-                  <Image src={feature.image} alt={feature.alt} />
+                <Image
+          src={feature.icon.url}
+          alt={feature.icon.alt}
+          width={50}
+          height={50}
+ 
+        />
                 </div>
                 <h2 className="FeatureTitle h6-600-third">{feature.title}</h2>
                 <div className="FeatureDescription h6">{feature.description}</div>

@@ -1,35 +1,37 @@
 import React from "react";
 import Image from "next/image";
-import { processSteps } from "../data/RenovationProcesData";
 
+const RenovationProces = ({ proces }) => {
+  const { title, process_steps } = proces;
 
-const RenovationProces = () => {
-    return (
-      <>
-        <section className="RenovationPageInfo">
-          <h4 className="MainSectionHeading h4">Jak wygląda proces Renowacji</h4>
-          <div className="ColWrapper">
-            {processSteps.map((step, index) => (
-              <div className="col-6" key={index}>
-                <div className="foto">
-                  <Image className="photo-section" src={step.image} />
-                </div>
-                <div className="text">
-                  <div className="inner-text">
-                    <p className="SmallHeading body-small-bigger">{step.number}</p>
-                    <h5 className="MainHeading h5">{step.heading}</h5>
-                    <h6 className="h6-400">{step.description}</h6>
-                  </div>
+  return (
+    <>
+      <section className="RenovationPageInfo">
+        <h4 className="MainSectionHeading h4">{title}</h4>
+        <div className="ColWrapper">
+          {process_steps.map((step, index) => (
+            <div className="col-6" key={index}>
+              <div className="foto">
+                <Image className="photo-section" 
+                src={step.process_image.url} 
+                alt={step.process_image.title}
+                width={100}
+                height={100}
+                />
+              </div>
+              <div className="text">
+                <div className="inner-text">
+                  <p className="SmallHeading body-small-bigger">{step.step}</p>
+                  <h5 className="MainHeading h5">{step.step_title}</h5>
+                  <h6 className="h6-400">{step.step_text}</h6>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-      </>
-    );
-  };
-  
-  export default RenovationProces;
-  
-  
-  
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default RenovationProces;

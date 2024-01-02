@@ -10,9 +10,9 @@ const TypeConnect = () => {
         <div>
 
               <div>
-                <Image src={Product1} />
-                <Image src={Product2} />
-                <Image src={Product3} />
+                <Image src={Product1} alt="product1"/>
+                <Image src={Product2} alt="product2"/>
+                <Image src={Product3} alt="product3"/>
               </div>
             </div>
       </>

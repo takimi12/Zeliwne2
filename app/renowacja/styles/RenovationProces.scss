@@ -1,11 +1,15 @@
 .RenovationPageInfo {
     padding: 0px 40px;
     max-width: 100%;
+  
 }
 
 
 .RenovationPageInfo .MainSectionHeading {
 padding: 72px 0px 64px 0px;
+@media only screen and (max-width: 767px) {
+    padding: 72px 16px 64px 16px;
+}
 }
 .RenovationPageInfo .MainHeading {
 padding: 14px 0px 14px 0px;
@@ -13,10 +17,12 @@ padding: 14px 0px 14px 0px;
 .RenovationPageInfo .ColWrapper {
 display: flex;
 justify-content: center;
+flex-wrap: wrap;
 }
 .RenovationPageInfo .ColWrapper .col-6{
 
 display: flex;
+margin-bottom: 50px;
 }
 .RenovationPageInfo  .text {
 padding:11.5px 30px 11.5px 40px ;
@@ -26,6 +32,7 @@ max-width: 400px;
 }
 .RenovationPageInfo  .foto {
 max-width: 50%;
+width: 240px;
 }
 .RenovationPageInfo  .photo-section {
 width: 100%;
@@ -34,14 +41,7 @@ object-fit: cover;
 }
 
 
-.RenovationPage {
-display: flex;
-padding-right: 112px;
-padding-left: 112px;
-padding-top: 88px;
-justify-content: space-around;
 
-}
 
 
 @media screen and (max-width: 1200px) {
@@ -62,6 +62,9 @@ justify-content: space-around;
 }
 
 @media screen and (max-width: 768px) {
+    .RenovationPageInfo .ColWrapper {
+        padding: 0px 16px;
+    }
 .RenovationPageInfo {
   
     padding: 0;
@@ -72,6 +75,7 @@ justify-content: space-around;
 }
 .RenovationPageInfo .foto {
 max-width: 100%;
+width: 100%;
 object-fit: cover;
 }
 .RenovationPageInfo .text {
@@ -80,6 +84,6 @@ width: 100%;
 padding: 0;
 }
 .RenovationPageInfo .inner-text{
-padding: 40px;
+padding: 40px 0px;
 }
 }

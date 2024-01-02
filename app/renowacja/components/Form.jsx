@@ -80,7 +80,7 @@ const RenovationForm = () => {
   <button class="custom-file-input-button" type="button">
     <div class="custom-file-input-button-inner">
       <span class="custom-file-input-icon">
-    <Image src={Plus} />
+    <Image src={Plus}  alt="plus"/>
           </span>
       <span class="custom-file-input-text body-small-smaller-second">Dodaj zdjęcia</span>
     </div>
@@ -94,7 +94,7 @@ const RenovationForm = () => {
       </button>
     </form>
     <div className="FormWrapperImage">
-        <Image src={FormFoto} />
+        <Image src={FormFoto} alt="formfoto" />
     </div>
     </section>
 

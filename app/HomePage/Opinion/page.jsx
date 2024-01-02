@@ -1,22 +1,17 @@
-'use client';
-
 import React from "react";
 import certificate from "../../../public/static/HomePage/certificate-check.png";
 import star from "../../../public/static/HomePage/Star-1.png";
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import Image from "next/image";
 
-import clientOpinions from '../Opinion/utils/Data'; 
-
-const Clients = () => {
-
+const Clients = ({ data }) => {
+  console.log(data);
 
   return (
     <section className="Clients">
@@ -37,22 +32,22 @@ const Clients = () => {
       </div>
       <div className="client-opinion-parent">
         <Swiper spaceBetween={20} slidesPerView={3} slidesOffsetBefore={40}>
-          {clientOpinions.map((opinion, index) => (
+          {data.map((opinion, index) => (
             <SwiperSlide key={index}>
               <div className="client-opinion">
                 <div className="client-opinion-wrapper">
                   <div className="star">
-                    {Array.from({ length: opinion.stars }).map((_, starIndex) => (
+                    {Array.from({ length: parseInt(opinion.star) }).map((_, starIndex) => (
                       <Image key={starIndex} src={star} alt="Star" />
                     ))}
                   </div>
-                  <h6 className="h6-third">{opinion.text}</h6>
-                  <h6 className="h6-300">{opinion.description}</h6>
+                  <h6 className="h6-third">{opinion.content}</h6>
+                  <h6 className="h6-300">{opinion.subtitle}</h6>
                   <div className="sign">
                     <Image src={certificate} alt="Certificate" />
                     <h6 className="h6-300">
                       {opinion.name}{" "}
-                      <span className="body-small-smaller">{`from ${opinion.location}`}</span>
+                      <span className="body-small-smaller">{`from ${opinion.from}`}</span>
                     </h6>
                   </div>
                 </div>

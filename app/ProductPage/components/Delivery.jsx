@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Deliver from "../../../public/static/ProductPage/Delivery/delivery.png";
 
 
@@ -13,7 +14,7 @@ const Delivery = () => {
 </h6>
 </div>
               <div className="col-6">
-                <Image className="delivery-package" src={Deliver} />
+                <Image className="delivery-package" src={Deliver} alt="delivery" />
               </div>
 
       </>

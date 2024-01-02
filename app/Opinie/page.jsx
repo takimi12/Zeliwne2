@@ -1,59 +1,65 @@
-import React from "react";
+"use client";
 
-import OpinionBigStar from "../../public/static/Opinion/OpinionBigStar.png";
-import OpinionSurnameImage from "../../public/static/Opinion/OpinionSurnameImage.png";
+import React, { useEffect, useState } from "react";
 
-import opinionsData from "./data/opinion";
 import Image from "next/image";
 
+
+// Import necessary libraries and components
 const ClientsOpinion = () => {
+  const [data, setData] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/159');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-
-  const renderOpinions = () => {
-    return opinionsData.map((opinion, index) => (
-      <div className="WrapperOpinion" key={index}>
-        <div className="WrapperOpinionLeft">
-          <div className="WrapperOpinionStars">
-            {opinion.stars.map((star, i) => (
-              <Image key={i} src={star} alt={`Star ${i + 1}`} />
-            ))}
-          </div>
-          <h6 className="WrapperOpinionHeading h6-600">{opinion.title}</h6>
-          <h6 className="ParagraphOpinionHeading h6-300">{opinion.text}</h6>
-          <div className="sign">
-            <Image src={OpinionSurnameImage} alt="Author Image" />
-            <p className="Surname body-small">
-              {opinion.author}
-              <p className="from body-small-smaller">{opinion.location}</p>
-            </p>
-          </div>
-        </div>
-        <div className="WrapperOpinionRight">
-          <Image className="BigFoto" src={opinion.image} alt="Opinion Image" />
-        </div>
-      </div>
-    ));
-  };
+    fetchData();
+  }, []);
 
   return (
     <>
-
       <section className="Opinions">
-        <div className="MainWrapper">
-          <h3 className="MainWrapperHeading h3">Opinie klientów</h3>
-          <div className="StarsWrapper">
-            {Array(5).fill(OpinionBigStar).map((star, index) => (
-              <Image key={index} src={star} alt={`Big Star ${index + 1}`} />
-            ))}
+        <div>
+        <div>
+        {data && (
+          <div className="mainHeading">
+            <h3> {data.acf.header}</h3>
+            <Image 
+            width={100}
+            height={100}
+            src={`${data.acf.header_stars.url}`}/>
+            <p className="average">Średnia ocena: <span>{data.acf.under_stars}</span></p>
+            
           </div>
-          <div className="MarkPlace">
-            <p className="body-small">Średnia ocena <span></span></p>
-          </div>
+        )}
+      </div>
         </div>
-        {renderOpinions()}
+
+        <div className="MainWrapper">
+        {data?.acf?.opinions?.map((opinion) => (
+            <div key={opinion.number_of_stars} className="WrapperOpinion">
+              <div className="WrapperOpinionLeft">
+                 <p> {opinion.number_of_stars}</p>
+                <h6 className="leftHeading">{opinion.title}</h6>
+                <p className="p15"> {opinion.paragraph}</p>
+                <p className="p13"> {opinion.signature}<span className="span13"> {opinion.country}</span></p>
+
+
+              </div>
+              <div className="WrapperOpinionRight">
+              <Image src={opinion.image.url} alt={opinion.title} width={326} height={325} />
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
-      
     </>
   );
 };

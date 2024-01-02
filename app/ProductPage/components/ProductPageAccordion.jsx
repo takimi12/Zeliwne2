@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FotoTab from "../../../public/static/ProductPage/ProductPageAccordion/AkordeonSchemat.png";
 import Arrow from "../../../public/static/ProductPage/ProductPageAccordion/Arrows.png";
+import Image from 'next/image';
 
 const SubAccordionItem = ({ title, length }) => {
   return (
@@ -21,7 +22,7 @@ const AccordionItem = ({ title, content, isActive, onClick }) => {
           onClick={onClick}
         >
           {title}
-          <img src={Arrow} alt="Arrow" />
+          <Image src={Arrow} alt="Arrow" />
         </button>
       </h2>
       {isActive && (
@@ -61,7 +62,7 @@ const Accordion = ({ items }) => {
           ))}
         </div>
         <div className='accordion-photo'>
-          <img src={FotoTab} alt="Accordion Photo" />
+          <Image src={FotoTab} alt="Accordion Photo" />
         </div>
       </div>
     </>

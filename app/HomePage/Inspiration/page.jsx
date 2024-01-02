@@ -151,7 +151,7 @@ const SectionSwiper = () => {
                   <h6 className="h6-600 clickunder900">
                     {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
                   </h6>
-                  <Image className="popuparrow" src={arrow} />
+                  <Image className="popuparrow" src={arrow} alt="popuparrow" />
                 </div>
               </div>
 

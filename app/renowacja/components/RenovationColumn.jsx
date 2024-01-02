@@ -1,43 +1,41 @@
+// RenovationColumn.js
 
-
+import React from "react";
 import Image from "next/image";
-import PageRenovation from "../../../public/static/Renowacja/PageRenovation.png";
 
+const RenovationColumn = ({ heroData }) => {
+  const { image, title, paragraph, button } = heroData;
 
-const RenovationColumn = () => {
- 
-    return (
-      <>
-<section className="RenovationPage">
-<div className="RenovationColumWrapper">
-    <div className="RenovationPageText">
-      <div className="InnerWrapper">
-  <h2 className="display"> RENOWACJA GRZEJNIKÓW</h2>
-  <div className="RenovationPageParagraph">
-    <h6 className="h6">
-    Grzejniki żeliwne to idealne rozwiązanie do wykończenia wnętrz domów,
-    szczególnie w budynkach zabytkowych lub tych o bogatej historii.
-    Jednak jak w przypadku każdego produktu wystawionego na próbę czasu
-    zalecana jest renowacja, która pozwoli Ci przywrócić grzejnik do
-    pełnej sprawności oraz nada mu nowy, niepowtarzalny wygląd.
- </h6>
-  </div>
-  <a href="/pl/renovation">
-    <button type="button" className="button-text-big">
-      Dowiedz się więcej
-    </button>
-  </a>
-  </div>
-  </div>
+  return (
+    <>
+      <section className="RenovationPage">
+        <div className="RenovationColumWrapper">
+          <div className="RenovationPageText">
+            <div className="InnerWrapper">
+              <h2 className="display">{title}</h2>
+              <div className="RenovationPageParagraph">
+                <h6 className="h6">{paragraph}</h6>
+              </div>
+              <a href={button.url}>
+                <button type="button" className="button-text-big">
+                  {button.title}
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="RenovationColumWrapper">
+          <Image
+            className="RenovationImage"
+            src={image.url}
+            alt={image.alt}
+            width={100}
+            height={100}
+          />
+        </div>
+      </section>
+    </>
+  );
+};
 
-</div>
-<div className="RenovationColumWrapper">
-  <Image className="RenovationImage" src={PageRenovation}  alt="Renovation" />
-</div>
-</section>
-      </>
-    );
-  };
-  
-  export default RenovationColumn;
-  
+export default RenovationColumn;

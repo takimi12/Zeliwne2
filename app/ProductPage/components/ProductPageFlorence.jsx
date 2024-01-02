@@ -12,7 +12,7 @@ const ProductPageFlorence = () => {
           <h2 className="display">Wyjątkowe grzejniki, które podkreślą styl Twojego wnętrza</h2>
           <div>
             <h6 className="h6">
-          That's usabiltiy hit focus diarize nail. Shoot board get zoom community panel domains window do wiggle. Up it's latest goto need. Three price no design box read win. Like quick air awareness where at. Meeting must journey expectations churning done contribution.
+          That`&apos;`s usabiltiy hit focus diarize nail. Shoot board get zoom community panel domains window do wiggle. Up it`&apos;`s latest goto need. Three price no design box read win. Like quick air awareness where at. Meeting must journey expectations churning done contribution.
           </h6>
           </div>
         </div>

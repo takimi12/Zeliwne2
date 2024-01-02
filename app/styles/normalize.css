@@ -1,19 +1,19 @@
 h1 {
-    font-family: "Plus Jakarta Sans";
+    
     font-size: 49px;
     font-weight: 600;
     line-height: 125%; /* 61.25px */
     letter-spacing: -1.96px;
     }
     h2 {
-    font-family: "Plus Jakarta Sans";
+    
     font-size: 42px;
     font-weight: 600;
     line-height: 125%; /* 52.5px */
     letter-spacing: -0.84px;
     }
     h3 {
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 32px;
         font-style: normal;
         font-weight: 600;
@@ -21,7 +21,7 @@ h1 {
         letter-spacing: -0.64px;
     }
     h4 {
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 27px;
         font-style: normal;
         font-weight: 600;
@@ -37,7 +37,7 @@ h1 {
     letter-spacing: -0.44px;
     }
     h6 {
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 15px;
         font-style: normal;
         line-height: 145%; /* 21.75px */
@@ -53,7 +53,7 @@ h1 {
     }
     .button
     {
-        font-family: "Plus Jakarta Sans";
+        
     font-size: 15px;
     font-style: normal;
     font-weight: 500;
@@ -61,14 +61,39 @@ h1 {
     letter-spacing: 0.15px;
     }
     p{
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 13px;
         font-style: normal;
         line-height: 145%; /* 18.85px */
         letter-spacing: 1.3px;
     }
+    .p15{
+        /* color: var(--Black-300, #525555); */
+        color: #525555;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: 145%; /* 21.75px */
+    }
+.p13
+{
+
+    color: #252727;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 18.85px */
+}
+.span13{
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: 145%;
+color: #939899;
+}
+
     label{
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 13px;
         font-style: normal;
         line-height: 145%; /* 18.85px */
@@ -88,7 +113,7 @@ h1 {
     
     button a {
                 color:  #FAFAFA;
-                font-family: "Plus Jakarta Sans";
+                
                 font-size: 15px;
                 font-style: normal;
                 font-weight: 500;
@@ -119,7 +144,7 @@ h1 {
 
         .display {
             color: #000;
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 72px;
         font-style: normal;
         font-weight: 500;
@@ -129,7 +154,7 @@ h1 {
         .display-second{
             color:  #FBF9F7;
         text-align: right;
-        font-family: "Plus Jakarta Sans";
+        
         font-size: 72px;
         font-style: normal;
         font-weight: 500;
@@ -177,7 +202,7 @@ h1 {
         }
         .h6-600 {
             color:  #252727;
-        font-family: "Plus Jakarta Sans";
+        
         font-weight: 600;
         }
         .h6-600-second

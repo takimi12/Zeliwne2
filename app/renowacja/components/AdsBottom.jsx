@@ -11,7 +11,10 @@ import Image from "next/image";
 
 
 
-const RenovationAdsBottom = () => {
+// Importy...
+
+const RenovationAdsBottom = ({ benefits }) => {
+
   const breakpoints = {
     600: {
       slidesPerView: 1,
@@ -34,7 +37,6 @@ const RenovationAdsBottom = () => {
     },
   };
 
-
   return (
     <section className="RenovationPageInfoAdvantages">
       <h4 className="RenovationMainHeading h4">Odnów swoje grzejniki w 4 prostych krokach</h4>
@@ -48,13 +50,13 @@ const RenovationAdsBottom = () => {
           className="mySwiper"
           breakpoints={breakpoints}
         >
-          {slidesData.map((slide, index) => (
+          {benefits.benefits_repeater.map((benefit, index) => (
             <SwiperSlide key={index}>
               <div className="RenovationPageInfoParent">
                 <div>
-                  <Image src={slide.image} alt="cube" />
-                  <h6 className="h6-600">{slide.title}</h6>
-                  <h6 className="h6">{slide.description}</h6>
+                  <Image src={benefit.benefit_icons.url} alt={benefit.under_icon} width={65} height={64} />
+                  <h6 className="h6-600">{benefit.under_icon}</h6>
+                  {/* Dodaj więcej pól, jeśli są potrzebne */}
                 </div>
               </div>
             </SwiperSlide>
@@ -63,6 +65,6 @@ const RenovationAdsBottom = () => {
       </div>
     </section>
   );
-}
+};
 
 export default RenovationAdsBottom;
