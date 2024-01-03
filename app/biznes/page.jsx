@@ -33,7 +33,7 @@ const ForBusiness = () => {
 
       <div className="BusinesContentWrapper">
         {data?.acf?.asymetric.map((item, index) => (
-            <>
+            <div className="ContentWrapper">
           <div className="ImageContent" key={index}>
             <Image
               className="Image"
@@ -49,7 +49,7 @@ const ForBusiness = () => {
               <h6 className="TextConentParagraph h6">{item.paragraph}</h6>
             </div>
           </div>
-            </>
+            </div>
         ))}
       </div>
     </>

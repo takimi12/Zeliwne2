@@ -1,87 +1,50 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import kart1 from "../../public/static/Produkt/Subkategorie/kat1.png"; 
-import kart2 from "../../public/static/Produkt/Subkategorie/kat2.png";
-import kart3 from "../../public/static/Produkt/Subkategorie/kat3.png";
-import kart4 from "../../public/static/Produkt/Subkategorie/kat4.png";
-import breadcrumb from "../../public/static/Produkt/breadcrumb.svg"; 
-import Image from "next/image";
+'use client';
 
-
-
-
-
+// Products.js
+import React, { useEffect, useState } from 'react';
+import  Link  from 'next/link';
+import styles from './Produkty.module.scss';
 
 const Products = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
 
   useEffect(() => {
-    const consumerKey = "ck_de987438de0a14980b115a1e9170560a61a12956";
-    const consumerSecret = "cs_80800b51bc64b69b97db8c7e898acd3ee840a080"; // Dodaj brakujący znak "a" na końcu klucza
-    const apiUrl = "https://et2.ergotree.pl/wp-json/wc/v3/products/categories";
-
-    const fetchCategories = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(apiUrl, {
-          headers: {
-            "Authorization": `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Request failed with status: " + response.status);
-        }
-
-        const data = await response.json();
-        setCategories(data);
+        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/1402');
+        const result = await response.json();
+        setCategories(result.acf.kategorie);
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching data:', error);
       }
     };
 
-    fetchCategories();
+    fetchData();
   }, []);
-
-  const categoryImages = {
-    "Grzejniki żeliwne": kart1,
-    "Grzejniki łazienkowe": kart2,
-    "Zawory": kart3,
-    "Akcesoria": kart4,
-  };
-
-  const filteredCategories = categories.filter(
-    (category) =>
-      category.name === "Akcesoria" ||
-      category.name === "Grzejniki żeliwne" ||
-      category.name === "Grzejniki łazienkowe" ||
-      category.name === "Zawory"
-  );
 
   return (
     <>
-    <section className="ProductPageCategory">
-      <div>
-        <div className="location">
-<span className="body-small"> <a href="/">Strona Główna</a></span>
-<span> <Image src={breadcrumb} alt="Logo" /></span>
-<span className="body-small">Produkty</span>
-</div>
-        <h4 className="h4">Produkty</h4>
-        <ul>
-          {filteredCategories.map((category) => (
-            <li key={category.id}>
-              <div className="ImageWrapper">
-                <Image className="ProductPageCategoryImage" src={categoryImages[category.name]} alt="Logo" />
-              </div>
-            <h6 className="h6-600">  {category.name}</h6>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-    
+      <section className={styles.sectionProduct}>
+        <h4 className={styles.title}>Produkty</h4>
+        <div className={styles.productsWrapper}>
+        {categories &&
+  categories.map((category, index) => (
+    <Link href={`/produkty/${category.link}`}
+    className={styles.produkty}
+    >
+        <img src={category.obrazek} alt={category.tytul} />
+        <h5 className={styles.productsWrapperheading}>{category.tytul}</h5>
+       </Link>
+  ))}
+        </div>
+      </section>
+
+
+
+
+
     </>
   );
-};
+}
 
 export default Products;

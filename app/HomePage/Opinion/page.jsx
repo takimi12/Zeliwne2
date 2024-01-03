@@ -11,7 +11,6 @@ import 'swiper/css/pagination';
 import Image from "next/image";
 
 const Clients = ({ data }) => {
-  console.log(data);
 
   return (
     <section className="Clients">

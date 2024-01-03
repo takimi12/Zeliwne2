@@ -16,6 +16,8 @@
     align-items: flex-start;
     padding: 27px 0px;
     width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .ContactDetailsSmall .Image {
     margin-right: 12px;
@@ -73,6 +75,9 @@
  .error  .customtextarea {
    border: none;
     background-color: #ffebee; 
+  }
+  .companyAdress{
+    max-width: 150px;
   }
 
   

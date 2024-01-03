@@ -35,7 +35,7 @@ const HomeLayout = () => {
     <>
       <Hero data1={acf.hero} />
       <Most data={acf.most} />
-      {/* <Inspiration data={acf.inspiration} /> */}
+      <Inspiration data={acf.inspirations} />
       <Box data={acf.box} />
       <Renovation data={acf.image_with_text} />
       <Opinion data={acf.opinion} />

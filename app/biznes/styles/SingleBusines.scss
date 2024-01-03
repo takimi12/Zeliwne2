@@ -1,13 +1,28 @@
 .ContentBusiness {
     padding: 0px 40px;
+    @media only screen and (max-width: 768px) {
+       padding: 0px 16px;
+      }
 }
 .BusinesContentWrapper {
-    display: flex;
     margin-bottom: 40px;
+    padding: 0px 40px;
+    .ContentWrapper{
+        display: flex;
+        margin-bottom: 20px;
+        @media only screen and (max-width: 768px) {
+          flex-direction: column;
+        }
+    }
+    .ContentWrapper:nth-child(even) {
+        flex-direction: row-reverse;
+        @media only screen and (max-width: 768px) {
+            flex-direction: column;
+          
+      }
+    }
 }
-.BusinesContentWrapper:nth-child(even) {
-    flex-direction: row-reverse;
-   }
+
 .ForBusinessTitleText .MainHeading{
     padding-top: 64px;
     padding-bottom: 20px;

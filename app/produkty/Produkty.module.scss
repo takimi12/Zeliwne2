@@ -1,0 +1,38 @@
+
+.sectionProduct{
+    padding: 0px 40px;
+    @media screen and (max-width: 800px) {
+      margin-top: 150px;
+    }
+    .title{
+      padding: 0;
+      margin-bottom: 80px;
+  
+      }
+  
+  }
+  
+  .productsWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .produkty
+    {
+      padding-bottom: 70px;
+      @media screen and (max-width: 991px) {
+        max-width: 48%;
+        padding-bottom: 40px;
+        }
+    
+    }
+    }
+    
+      .productsWrapperheading{
+        margin-top: 10px;
+        @media screen and (max-width: 768px) {
+     font-size: 18px;
+          }
+      }
+    
+  
+  

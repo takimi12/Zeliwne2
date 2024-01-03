@@ -1,7 +1,7 @@
 import React from "react";
 
 const Featured = ({ data }) => {
-  console.log(data);
+
 
   const sectionStyle = {
     backgroundImage: `url(${data.background.url})`,

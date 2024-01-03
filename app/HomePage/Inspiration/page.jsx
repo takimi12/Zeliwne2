@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -16,13 +14,13 @@ import { SwiperNavButtons } from './helpers/SwiperNavButtons.jsx';
 import Inspiration from "../../../public/static/HomePage/InspirationPlus.svg";
 import Image from "next/image";
 
-const SectionSwiper = () => {
+const SectionSwiper = ({data}) => {
   const [showPopup, setShowPopup] = useState(false);
-  const popupRef = useRef(null); // Ref dla elementu popup
+  const popupRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
-  const [isBottomSectionExpanded, setIsBottomSectionExpanded] = useState(false); // Nowy stan do śledzenia rozwinięcia BottomInfoSection
-  const [isConfigurationClicked, setIsConfigurationClicked] = useState(false); // Nowy stan do śledzenia pierwszego kliknięcia konfiguracji
+  const [isBottomSectionExpanded, setIsBottomSectionExpanded] = useState(false);
+  const [isConfigurationClicked, setIsConfigurationClicked] = useState(false);
 
   const handleImageClick = (image, index) => {
     setSelectedImage(image);
@@ -41,11 +39,10 @@ const SectionSwiper = () => {
 
   const handleConfigurationClick = () => {
     setIsConfigurationClicked(true);
-    setIsBottomSectionExpanded((prevState) => !prevState); // Zmień stan, aby pokazać/ukryć BottomInfoSection
+    setIsBottomSectionExpanded((prevState) => !prevState);
     const buttonText = isBottomSectionExpanded ? "Konfiguracja" : "Zwiń";
     document.querySelector(".clickunder900").textContent = buttonText;
 
-    // Przewijanie popupu na dół lub górę w zależności od stanu
     if (popupRef.current) {
       if (!isBottomSectionExpanded) {
         popupRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -63,11 +60,8 @@ const SectionSwiper = () => {
     }
   }, [showPopup]);
 
-  const images = [first, second, third, fourth, five];
-
   useEffect(() => {
     if (showPopup && isBottomSectionExpanded) {
-      // Przewijanie na dół do rozwiniętej sekcji
       if (popupRef.current) {
         popupRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
       }
@@ -82,15 +76,29 @@ const SectionSwiper = () => {
           slidesPerView={4}
           slidesOffsetBefore={40}
           navigation
+          initialSlide={1}
+          loop={true} 
+          onSlideChange={(swiper) => {
+            const currentIndex = swiper.activeIndex;
+            const lastIndex = swiper.slides.length - 2;
+
+            if (currentIndex === lastIndex) {
+              swiper.slideTo(1, 0, false);
+            }
+          }}
         >
           <div className='swiper-top'>
             <h4 className="h4">Inspiracje</h4>
-            <SwiperNavButtons />
           </div>
-          {images.map((image, index) => (
+          {[...data, data[0], data[1]].map((inspiration, index) => (
             <SwiperSlide key={index}>
-              <div className='hover-effect-div' onClick={() => handleImageClick(image, index)}>
-                <Image src={image} alt="Slide Image" />
+              <div className='hover-effect-div' onClick={() => handleImageClick(inspiration.image, index)}>
+                <Image
+                  src={inspiration.image.link}
+                  alt={inspiration.image.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
                 <div className='hover-effect-div-inner'>
                   <Image src={Inspiration} alt="Logo" />
                   <h5 className='Look'>Zobacz</h5>
@@ -102,67 +110,72 @@ const SectionSwiper = () => {
         {showPopup && (
           <div ref={popupRef} className="popup-overlay" onClick={closePopup}>
             <div className="popup" onClick={handlePopupClick}>
-                <Swiper
-                  slidesPerView={1}
-                  initialSlide={selectedSlideIndex}
-                >
-                  {images.map((image, index) => (
-                    <SwiperSlide key={index}>
-                      <div className="imageSecition">
-                         <SwiperNavButtons />
-                      <Image className="PopupMainImage" src={image} alt={`Popup Image ${index}`} />
-                      </div>
-                      <div className={`info ${isBottomSectionExpanded ? 'expanded' : ''}`}> {/* Dodaj warunkowy className */}
-                <div className="TopInfoSection">
-                  <h5 className="h5">Grace</h5>
-                  <p className="body-small-smaller-third">Ilość kolumn: 2</p>
-                  <p className="body-small-smaller-third">Wysokość: 478</p>
-                </div>
-                <div className="BottomInfoSection">
-                  <h3 className="h6-600-third">Konfiguracja ze zdjęcia</h3>
-                  <div className="bottoInfosecttionText">
-                    <div className="photowithtext">
-                    <div className="photo"></div>
-                    <div className="text">
-                      <p className="body-small-bigger-third">Wykończenie</p>
-                      <p className="body-small-smaller-third">RAL 7072</p>
-                    </div>
-                  </div>
-                  <div className="photowithtext">
-                    <div className="photo"></div>
-                    <div className="text">
-                      <p body-small-bigger-third>Wykończenie</p>
-                      <p className="body-small-smaller-third">RAL 7072</p>
-                    </div>
-                  </div>
-                  <div className="photowithtext">
-                    <div className="photo"></div>
-                    <div className="text">
-                      <p className="body-small-bigger-third">Wykończenie</p>
-                      <p className="body-small-smaller-third">RAL 7072</p>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                <div className="buttonwraper">
-                  <button><a href="#">Zobacz produkt</a></button>
-                </div>
-                <div className="ConfigurationUnder900" onClick={handleConfigurationClick}>
-                  <h6 className="h6-600 clickunder900">
-                    {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
-                  </h6>
-                  <Image className="popuparrow" src={arrow} alt="popuparrow" />
-                </div>
-              </div>
+              <Swiper
+                slidesPerView={1}
+                loop={true} 
+                initialSlide={selectedSlideIndex + 1}
+                onSlideChange={(swiper) => {
+                  const currentIndex = swiper.activeIndex;
+                  const lastIndex = swiper.slides.length - 2;
 
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
+                  if (currentIndex === lastIndex) {
+                    swiper.slideTo(1, 0, false);
+                  }
+                }}
+              >
+                {[...data, data[0], data[1]].map((inspiration, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="imageSecition">
+                      <Image src={inspiration.image.link} alt={inspiration.image.title} 
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div className={`info ${isBottomSectionExpanded ? 'expanded' : ''}`}>
+                      <div className="TopInfoSection">
+                        <h5 className="h5">{inspiration.title}</h5>
+                        <p className="body-small-smaller-third">{inspiration.height}</p>
+                        <p className="body-small-smaller-third">{inspiration.count_column}</p>
+                      </div>
+                      <div className="BottomInfoSection">
+                        <h3 className="h6-600-third">Konfiguracja ze zdjęcia</h3>
+                        {inspiration.config.map((item, subIndex) => (
+                          <div className="bottoInfosecttionText" key={subIndex}>
+                            <div className="photowithtext">
+                              <div className="photo">
+                                <Image src={item.image.url} alt={item.image.alt}
+                                  width={100}
+                                  height={100}
+                                />
+                              </div>
+                              <div className="text">
+                                <p className="body-small-bigger-third">{item.subtitle}</p>
+                                <p className="body-small-smaller-third">{item.value}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="buttonwraper">
+                        <button><a href="#">Zobacz produkt</a></button>
+                      </div>
+                      <div className="ConfigurationUnder900" onClick={handleConfigurationClick}>
+                        <h6 className="h6-600 clickunder900">
+                          {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
+                        </h6>
+                        <Image className="popuparrow" src={arrow} alt="popuparrow" />
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+            <div className="buttoninnerWrapper">
               <button className="close-button" onClick={closePopup}>
                 X
               </button>
             </div>
+          </div>
         )}
       </section>
     </>
