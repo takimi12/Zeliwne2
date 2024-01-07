@@ -3,15 +3,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Subkategorie.module.scss";
 import Image from "next/image";
+import Series from "../../components/series/series";
+import Link from "next/link";
 
 const ProductOneCategorySub = () => {
   const [categories, setCategories] = useState(null);
   const [currentCategoryArray, setCurrentCategoryArray] = useState([]);
 
 
+
   const currentPath = window.location.pathname;
   let segments = currentPath.split('/').filter(segment => segment !== '');
   let lastSegment = segments[segments.length - 1].toLowerCase();
+
 
 
 
@@ -55,13 +59,17 @@ const ProductOneCategorySub = () => {
     <>
 {currentCategoryArray.map((item, index) => (
         <div key={index} className="use-client">
-          <h2>{item.tytul}</h2>
+    <Link href={`/produkty/${[lastSegment]}/${item.tytul}`}>
           <Image src={item.obrazek} alt={item.tytul}
           width={300}
           height={300}
           />
+                    <h2>{item.tytul}</h2>
+                    </Link>
         </div>
       ))}
+
+      <Series />
     </>
   );
 };

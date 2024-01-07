@@ -3,19 +3,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Subkategorie.module.scss";
 import Image from "next/image";
+import Series from "../../../components/series/series";
+import Link from "next/link";
 
 const ProductOneCategorySub = () => {
   const [categories, setCategories] = useState(null);
   const [currentCategoryArray, setCurrentCategoryArray] = useState([]);
+  const [currentPath1, setCurrentPath1] = useState(null);
+
 
   const currentPath = window.location.pathname;
   let segments = currentPath.split('/').filter(segment => segment !== '');
   let lastSegment2 = segments[segments.length - 2].toLowerCase();
   let lastSegment1 = segments[segments.length - 1].toLowerCase();
 
-
-  console.log(categories, 'categories')
-  console.log(currentCategoryArray, 'currentCategoryArray');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,6 +50,7 @@ const ProductOneCategorySub = () => {
               ...categoryItem[lastSegment1].map(emmelineItem => ({
                 tytul: emmelineItem.tytul,
                 obrazek: emmelineItem.obrazek,
+                api: emmelineItem.api,
               }))
             );
           }
@@ -62,19 +64,25 @@ const ProductOneCategorySub = () => {
     }
   }, [categories]);
 
-  // Tutaj możesz użyć zmiennych currentCategoryArray i categories do renderowania komponentu
+  const handleCategoryClick = (title) => {
+    setCurrentPath1(title);
+  };
 
   return (
     <>
 {currentCategoryArray.map((item, index) => (
+        <Link href={`/product/${item.api}`}>
         <div key={index} className="use-client">
           <h2>{item.tytul}</h2>
+          
           <Image src={item.obrazek} alt={item.tytul}
           width={300}
           height={300}
           />
         </div>
+        </Link>
       ))}
+      <Series onCategoryClick={handleCategoryClick} lastSegment2={lastSegment2} />
     </>
   );
 };

@@ -1,0 +1,117 @@
+.productPage {
+    padding: 40px;
+  
+    .productPageWrapper {
+      display: flex;
+      justify-content: space-between;
+  
+      .imageWrapper {
+        width: 55%;
+  
+        .imageWrapperInner {
+          display: block;
+  
+          .parentImage {
+            width: 100%;
+  
+            .image {
+              width: 100%;
+            }
+          }
+        }
+      }
+  
+      .infoWrapper {
+        width: 35%;
+        position: relative;
+  
+        .stickyPosition {
+          position: sticky;
+          top: 69px;
+  
+          .mainInfo {
+            margin: 12px 0px;
+            gap: 15px;
+  
+            .mainInfoTittle {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+  
+              .mainHeading {
+                margin-bottom: 12px;
+              }
+            }
+  
+            .mainDescParent {
+              margin-bottom: 40px;
+  
+              .mainDesc {
+                font-size: 14px;
+                font-weight: 400;
+                color: #666666;
+              }
+            }
+  
+            .mainDesc {
+              padding-bottom: 40px;
+            }
+  
+            .sizeParent {
+              align-items: flex-start;
+              gap: 10px;
+              display: flex;
+              margin-bottom: 56px;
+  
+              .borders {
+                font-weight: 400;
+                border: solid 1px grey;
+                padding: 8px 16px;
+              }
+            }
+            .mainPrize{
+                margin-bottom: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .contactDetailsWrapper{
+    display: flex;
+    gap: 40px;
+    padding-top: 50px;
+    .delivery{
+        display: flex;
+        gap: 10px;
+    }
+  }
+  .contactWrapper{
+    .delivery{
+        display: flex;
+        gap: 10px;
+    }
+  }
+
+  .special{
+    padding: 128px 40px;
+    .parent {
+        display: flex; 
+        justify-content: space-between;
+        .bottomSectionContent{
+            max-width: 48%;
+            .mainHeading{
+                margin-top: 6px;
+                margin-bottom: 36px;
+            }
+        
+        }
+        .bottomSectionImage{
+            max-width: 48%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+  }

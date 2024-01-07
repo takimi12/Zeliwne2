@@ -1,0 +1,63 @@
+.firstLevel{
+    display: flex;
+    justify-content: space-between;
+    .leftMenu{
+        display: flex;
+        gap: 30px;
+    }
+    .secondLevel{
+        display: flex;
+    }
+}
+.leftSide{
+    display: flex;
+    gap: 40px;
+}
+
+.secondLevelParent
+{
+    display: flex;
+.secondLevel
+{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+}
+
+.menu3{
+    display: block;
+}
+
+.menu34{
+    display: block;
+}
+
+.bigMenu{
+    display: flex;
+ 
+    gap: 30px;
+}
+
+.thirdLevel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}   
+
+.api{
+    position: absolute;
+    top: 0;
+
+}
+
+.active {
+ visibility: visible!important;
+  }
+  
+  .menuItemApi2 {
+position: absolute;
+top: 0;
+visibility: hidden;
+  }
