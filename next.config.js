@@ -2,7 +2,7 @@
 const nextConfig = {
 
   images: {
-    domains: ['grzejniki.ergotree.pl'],
+    domains: ['grzejniki2.ergotree.pl'],
   },
 };
 

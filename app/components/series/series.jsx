@@ -10,97 +10,45 @@ import Link from 'next/link';
 
 
 function Products({onCategoryClick, handleSubCategoryClick, lastSegment2}) {
-    const [categories, setCategories] = useState(null);
-    const [currentCategoryArray, setCurrentCategoryArray] = useState([]);
+  const [categories, setCategories] = useState(null);
 
-    const [newCategories, setnewCategories] = useState(null);
+console.log(categories, 'series')
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                let url;
-
-                if (lastSegment2 === undefined) {
-                    url = 'https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/1402';
-                    const response = await fetch(url);
-                    const result = await response.json();
-                    setnewCategories(result);
-                } else {
-                    url = 'https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/1704';
-                    const response = await fetch(url);
-                    const result = await response.json();
-                    setCategories(result);
-                }
-                    
-           
-
-              
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-
-        fetchData();
-    }, [lastSegment2]);
-  
-    useEffect(() => {
-      if (categories && categories.acf && categories.acf[lastSegment2]) {
-        const zeliwneCategories = categories.acf[lastSegment2].reduce((acc, category) => {
-          const categoryKeys = Object.keys(category);
-          const categoryObjects = categoryKeys.map((key) => ({
-            tytul: category[key][0].tytul,
-            obrazek: category[key][0].obrazek,
-          }));
-          return [...acc, ...categoryObjects];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wc/v3/products/categories', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa('ck_333c63c1676df66d84322191922b725ba3dc7f1e:cs_85c7bc717de01741a71ad8dc9152986569b62cec')
+          },
         });
-  
-        setCurrentCategoryArray(zeliwneCategories);
+        const result = await response.json();
+        // Filter categories where parent is equal to 0 and exclude "Bez kategorii"
+        const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
+        setCategories(filteredCategories);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-    }, [categories, lastSegment2]);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <section className={styles.products}>
 
-{!lastSegment2 && newCategories && newCategories.acf && newCategories.acf.kategorie && (
-  <ul>
-    {newCategories.acf.kategorie.map((category, index) => (
-      <li key={index}>
-        <Link href={`/produkty/${lastSegment2}/${category.link}`}>
-          <div>
-            <h3>{category.tytul}</h3>
-            <img src={category.obrazek} alt={category.tytul} />
-          </div>
+{categories && categories.map(category => (
+        <Link href={`/produkty/${category.id}`}>
+        <div key={category.id}>
+          <h2>{category.name}</h2>
+          {category.image && category.image.src && (
+            <img src={category.image.src} alt={category.image.alt} className={styles.categoryImage} />
+          )}
+        </div>
         </Link>
-      </li>
-    ))}
-  </ul>
-)}
-
-{lastSegment2 && currentCategoryArray && Object.keys(currentCategoryArray).length > 0 && (
-  <Swiper
-    spaceBetween={20}
-    slidesPerView={4}
-    slidesOffsetBefore={40}
-    navigation
-    pagination={{ clickable: true }}
-  >
-    {Object.keys(currentCategoryArray).map((key, index) => (
-      <SwiperSlide key={index}>
-        <Link
-          href={`/produkty/${lastSegment2}/${currentCategoryArray[key][0].tytul}`}
-          onClick={() => onCategoryClick(currentCategoryArray[key][0].tytul)}
-        >
-          <div>
-            <h3>{currentCategoryArray[key][0].tytul}</h3>
-            <img
-              src={currentCategoryArray[key][0].obrazek}
-              alt={currentCategoryArray[key][0].tytul}
-            />
-          </div>
-        </Link>
-      </SwiperSlide>
-    ))}
-  </Swiper>
-)}
+      ))}
 
   </section>
   
