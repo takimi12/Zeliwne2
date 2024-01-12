@@ -9,10 +9,9 @@ import styles from './Series.module.scss';
 import Link from 'next/link';
 
 
-function Products({onCategoryClick, handleSubCategoryClick, lastSegment2}) {
+function Products({ lastSegment1}) {
   const [categories, setCategories] = useState(null);
 
-console.log(categories, 'series')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,15 +25,19 @@ console.log(categories, 'series')
         });
         const result = await response.json();
         // Filter categories where parent is equal to 0 and exclude "Bez kategorii"
-        const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
-        setCategories(filteredCategories);
+
+
+
+const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
+setCategories(filteredCategories);
+       
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [lastSegment1]);
 
   return (
     <section className={styles.products}>

@@ -48,7 +48,7 @@ const RenovationAdsBottom = ({ simpleSteps }) => {
             <SwiperSlide key={index}>
               <div className="RenovationPageInfoParent">
                 <div>
-                  <Image src={step.icon.url} alt={step.icon.alt} width={step.icon.width} height={step.icon.height} />
+                  <img src={step.icon.url} alt={step.icon.alt} width={step.icon.width} height={step.icon.height} />
                   <h6 className="h6-600">{step.bold}</h6>
                   <h6 className="h6">{step.text}</h6>
                 </div>

@@ -1,39 +1,63 @@
-.title{
-    padding: 40px;
-    @media screen and (max-width: 801px) {
-        padding: 0 0 0 16px;
-      margin-top: 150px;
-      }
+.breadcrumbs{
+  padding: 0px 40px;
+  margin-bottom: 80px;
+  @media screen and (max-width: 768px) {
+  padding: 0px 16px;
+    }
 }
 
-.products{
-  padding: 0px 40px;
-  margin-top: 350px;
-  display: flex;
-  gap: 25px;
-    @media screen and (max-width: 801px) {
-      flex-direction: column;
-      align-items: center;
-    }
-    .imageWraper{
-      @media screen and (max-width: 801px) {
-        width: 100%;
-
-          }
-    img{
-    width: 340px;
-      @media screen and (max-width: 801px) {
-    width: 100%;
-    max-width: 75%;
+.sectionProduct{
+    padding: 0px 40px;
     display: flex;
-    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+    @media screen and (max-width: 768px) {
+      padding: 0px 16px;
+        }
+    .title{
+      padding: 0;
+      margin-bottom: 80px;
+  
       }
+  
+  }
+  
+  .productsWrapper{
+    max-width: 48%;
+    width: 100%;
+    @media screen and (max-width: 991px) {
+    max-width: 100%;
+    margin-bottom: 40px;
     }
-    h5{
+  }
 
-      @media screen and (max-width: 801px) {
-        text-align: center;
-      }
+  .categoryImage{
+    margin-bottom: 10px;
+  }
+
+  .none {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.active {
+    visibility: visible;
+}
+
+.settingWidth{
+  max-width: 23%;
+  width: 199%;
+  @media screen and (max-width: 1199px) {
+    max-width: 48%;
+    width: 100%;
     }
-  }
-  }
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+    img{
+      width: 100%;
+    }
+    p{margin-bottom: 40px;}
+    }
+}

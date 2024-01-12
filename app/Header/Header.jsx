@@ -9,7 +9,7 @@ import kaloryfer from '../../public/static/Header/navikaloryfer.svg';
 const App = () => {
   const [categories, setCategories] = useState(null);
 
-  console.log(categories, 'categories');
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,8 +47,7 @@ const App = () => {
   const [elementMenu2, setElementMenu2] = useState(null);
 
   
-console.log(elementMenu1, 'elementMenu')
-console.log(elementMenu2, 'elementMenu2')
+
 
 
   const MouseEnterElementMenu = (product_id) => {

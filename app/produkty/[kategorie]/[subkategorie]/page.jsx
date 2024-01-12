@@ -3,14 +3,23 @@ import React, { useEffect, useState } from "react";
 import styles from "./Subkategorie.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import Breadcrumbs from "@/app/components/breadcrumbs/breadcrumbs";
 
 const ProductOneCategorySub = () => {
   const [categories, setCategories] = useState(null);
   const [mappedCategories, setMappedCategories] = useState(null);
   const [lastSegment, setLastSegment] = useState(null);
+  const [secondCategories, setsecondCategories] = useState(null);
 
-  console.log(categories, 'categories')
+  console.log(mappedCategories, 'mappedCategories')
+ 
+  const namesArray = (secondCategories && secondCategories.flatMap(item => item.categories) || []).slice(0, 2).map(item => item.name);
+  const [firstIndex, secondIndex] = namesArray;
 
+  const currentPath = window.location.pathname;
+  let segments = currentPath.split('/').filter(segment => segment !== '');
+  let lastSegment3 = segments[segments.length - 3];
+  let lastSegment2 = segments[segments.length - 2];
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -22,8 +31,8 @@ const ProductOneCategorySub = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (!lastSegment) {
-          // Jeśli lastSegment nie został przekazany, nie wykonuj żadnych operacji
+        if (!lastSegment ) {
+          // Jeśli lastSegment lub lastSegment2 nie został przekazany, nie wykonuj żadnych operacji
           return;
         }
 
@@ -36,12 +45,18 @@ const ProductOneCategorySub = () => {
         });
         const result = await response.json();
 
-        // Odfiltrowanie produktów z kategorii "Grzejniki żeliwne"
         const filteredCategories = result.filter(product => {
-          // Sprawdzenie, czy produkt należy do kategorii o ID równym 16
           const isIronRadiators = product.categories.some(category => category.id == lastSegment);
           return isIronRadiators;
         });
+
+        const filteredByLastSegment = result
+        .filter(product => product.categories.some(category => category.id == lastSegment))
+        .map(category => ({ categories: category.categories }))
+        .filter(item => item.categories.some(category => category.id == lastSegment));
+      
+      setsecondCategories(filteredByLastSegment);
+      
 
         setCategories(filteredCategories);
       } catch (error) {
@@ -68,23 +83,39 @@ const ProductOneCategorySub = () => {
 
   return (
     <>
-      {mappedCategories && mappedCategories.map(mappedCategory => (
-        <Link 
-        href={`/product/${mappedCategory.id}`}
-        >
-        <div key={mappedCategory.name}>
-           <p>{mappedCategory.id}</p>
-          <h2>{mappedCategory.name}</h2>
-          
-          {mappedCategory.images.map(image => (
-            <React.Fragment key={image.id}>
-              <img src={image.src} alt={image.alt} width={300} height={300} />
-            </React.Fragment>
-          ))}
-        
-        </div>
-        </Link>
-      ))}
+  <section className={styles.breadcrumbs}>
+ <Breadcrumbs lastSegment3={lastSegment3} lastSegment2={lastSegment2} firstIndex={firstIndex} secondIndex={secondIndex}  />
+   <h4>{firstIndex}</h4>
+   </section>
+   <section className={styles.sectionProduct}>
+   {mappedCategories && mappedCategories.map(mappedCategory => (
+    <div className={styles.settingWidth}>
+  <Link 
+    href={`/product/${mappedCategory.id}`}
+    key={mappedCategory.name}
+  >
+    <div>
+    {mappedCategory.images.map((image, index) => (
+  <div className={styles.categoryImage} key={image.id}>
+    {index === 0 && (
+      <div className={styles.active}>
+        <img src={image.src} alt={image.alt} width={300} height={300} />
+      </div>
+    )}
+    {index !== 0 && (
+      <div className={styles.none}>
+        <img src={image.src} alt={image.alt} width={300} height={300} />
+      </div>
+    )}
+  </div>
+))}
+       <p className="p15six">{mappedCategory.name}</p>         
+    </div>
+  </Link>
+  </div>
+))}
+      
+      </section>
     </>
   );
 };

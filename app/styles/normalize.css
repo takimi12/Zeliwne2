@@ -28,8 +28,9 @@ h1 {
         line-height: 120%; /* 38.4px */
         letter-spacing: -0.64px;
     }
+
     h4 {
-        
+        color: #252727;
         font-size: 27px;
         font-style: normal;
         font-weight: 600;
@@ -101,6 +102,7 @@ line-height: 145%; /* 21.75px */
     font-weight: 400;
     line-height: 145%; /* 18.85px */
 }
+
 .p138
 {
     color:#244B55;

@@ -6,6 +6,7 @@ import Image from "next/image";
 const RenovationColumn = ({ heroData }) => {
   const { image, title, paragraph, button } = heroData;
 
+  console.log(heroData, "heroData")
   return (
     <>
       <section className="RenovationPage">
@@ -25,12 +26,9 @@ const RenovationColumn = ({ heroData }) => {
           </div>
         </div>
         <div className="RenovationColumWrapper">
-          <Image
+          <img
             className="RenovationImage"
             src={image.url}
-            alt={image.alt}
-            width={100}
-            height={100}
           />
         </div>
       </section>

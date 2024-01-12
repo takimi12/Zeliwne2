@@ -93,9 +93,7 @@ const RenovationForm = () => {
         Wyślij zapytanie
       </button>
     </form>
-    <div className="FormWrapperImage">
-        <Image src={FormFoto} alt="formfoto" />
-    </div>
+
     </section>
 
     </>

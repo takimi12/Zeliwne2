@@ -10,11 +10,20 @@ import Form from "./components/Form";
 const Renovation = () => {
   const [data, setData] = useState(null);
 
+  console.log(data, 'data');
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/109');
+     
+
+        const response = await fetch(`https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/109`, {
+          method: 'GET',
+      
+        });
         const result = await response.json();
+
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -23,6 +32,7 @@ const Renovation = () => {
 
     fetchData();
   }, []);
+
 
   return (
     <>
