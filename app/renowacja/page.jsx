@@ -5,12 +5,11 @@ import Hero from "./components/RenovationColumn";
 import SimpleSteps from "./components/AdsTop";
 import Proces from "./components/RenovationProces";
 import Benefits from "./components/AdsBottom";
-import Form from "./components/Form";
+import Form from "../components/Form/Form";
 
 const Renovation = () => {
   const [data, setData] = useState(null);
 
-  console.log(data, 'data');
 
 
   useEffect(() => {
@@ -38,10 +37,10 @@ const Renovation = () => {
     <>
       {data && (
         <>
-          <Hero heroData={data.acf.hero} />
+          {/* <Hero heroData={data.acf.hero} />
           <SimpleSteps simpleSteps={data.acf.simple_steps} />
           <Proces proces={data.acf.process} />
-          <Benefits benefits={data.acf.benefits}/>
+          <Benefits benefits={data.acf.benefits}/> */}
           <Form />
         </>
       )}

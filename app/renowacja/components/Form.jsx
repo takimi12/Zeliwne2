@@ -1,22 +1,20 @@
 import React from "react";
-
-import FormFoto from "../../../public/static/Renowacja/Form/FormFoto.png";
 import Plus from "../../../public/static/Renowacja/Form/plus-form.svg";
 import Image from "next/image";
 
 const RenovationForm = () => {
   return (
     <>
-  <section className="FormSection">
-    <form className="renovation-form">
-      <h4 className="form-title h4">Wyceń renowację swoich grzejników!</h4>
-      <div className="formgroup">
+  <section className={styles.formSection}>
+    <form className={styles.renovationForm}>
+      <h4 className={styles.formTitle}>Wyceń renowację swoich grzejników!</h4>
+      <div className={styles.formGroup}>
 
-        <div className="input-wrapper">
+        <div className={styles.inputWrapper}>
           <label className="input-label body-small-smaller-second" htmlFor="name">Imię</label>
-          <div className="input-container">
+          <div className={styles.inputContainer}>
             <input
-              className="custom-input"
+              className={styles.customInput}
               id="name"
               type="text"
               aria-invalid="false"
@@ -24,12 +22,12 @@ const RenovationForm = () => {
             />
           </div>
         </div>
-        <div className="input-wrapper">
-          <label className="input-label body-small-smaller-second" htmlFor="name">Imię</label>
-          <div className="input-container">
+        <div className={styles.inputWrapper}>
+          <label className="input-label body-small-smaller-second" htmlFor="name">Nazwisko</label>
+          <div className={styles.inputContainer}>
             <input
-              className="custom-input"
-              id="name"
+              className={styles.customInput}
+              id="surname"
               type="text"
               aria-invalid="false"
 
@@ -37,36 +35,36 @@ const RenovationForm = () => {
           </div>
         </div>
         </div>
-      <div className="formgroup">
+      <div className={styles.formGroup}>
 
-        <div className="input-wrapper">
-          <label className="input-label body-small-smaller-second" htmlFor="name">Imię</label>
-          <div className="input-container">
+        <div className={styles.inputWrapper}>
+          <label className="input-label body-small-smaller-second" htmlFor="name">Adres e-mail</label>
+          <div className={styles.inputContainer}>
             <input
-              className="custom-input"
+              className={styles.customInput}
               id="name"
-              type="text"
+              type="e-mail"
               aria-invalid="false"
             />
           </div>
         </div>
-        <div className="input-wrapper">
-          <label className="input-label body-small-smaller-second" htmlFor="name">Imię</label>
-          <div className="input-container">
+        <div className={styles.inputWrapper}>
+          <label className="input-label body-small-smaller-second" htmlFor="name">Numer telefonu</label>
+          <div className={styles.inputContainer}>
             <input
-              className="custom-input"
+              className={styles.customInput}
               id="name"
-              type="text"
+              type="number"
               aria-invalid="false"
             />
           </div>
         </div>
         </div>
-      <div className="textarea-wrapper">
+      <div className={styles.textareaWrapper}>
         <label className="textarea-label body-small-smaller-second" htmlFor="message">Wiadomość</label>
-        <div className="textarea-container">
+        <div className={styles.textareaConainer}>
           <textarea
-            className="customtextarea"
+            className={styles.textarea}
             id="message"
             aria-invalid="false"
             draggable="false"
@@ -76,13 +74,13 @@ const RenovationForm = () => {
       <div className="photo-stack">
         <div className="photo-text body-small-smaller-second">Zdjęcia grzejników</div>
         <div className="photo-button">
-              <div class="custom-file-input">
-  <button class="custom-file-input-button" type="button">
-    <div class="custom-file-input-button-inner">
-      <span class="custom-file-input-icon">
+              <div class={styles.customFileInput}>
+  <button class={styles.customFileInputButton} type="button">
+    <div class={styles.customFileInputButtonInner}>
+      <span class={styles.customFileInputIcon}>
     <Image src={Plus}  alt="plus"/>
           </span>
-      <span class="custom-file-input-text body-small-smaller-second">Dodaj zdjęcia</span>
+      <span class={`${styles.customFileInputText} body-small-smaller-second"` } >Dodaj zdjęcia</span>
     </div>
   </button>
   <input class="custom-file-input-hidden" type="file" multiple="" />

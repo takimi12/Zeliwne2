@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import styles from  "./Form.module.scss";
+import Plus from "../../../public/static/Renowacja/Form/plus-form.svg";
+import Image from "next/image";
 
-const ContactForm = () => {
+
+const ContactForm = ({formProp}) => {
   // Stan i funkcje walidacji początkowe
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -133,16 +137,24 @@ const ContactForm = () => {
 
   return (
     <>
+<div className={formProp ? styles.contactSection : styles.contactFormSection}>
         <form className="contact-form" onSubmit={handleSubmit}>
-          <h2 className="ContactFormHeading">Wyceń renowację swoich grzejników!</h2>
-          <div className="formgroup">
-            <div className={`input-wrapper ${nameError ? "error" : ""}`}>
+        {formProp ? null : (
+  <div>
+    <h4 className={styles.contactHeading}>Wyceń renowację swoich grzejników!</h4>
+    {/* Dodaj tutaj inne elementy, jeśli są potrzebne */}
+  </div>
+)}
+         
+          <div className={styles.formGroup}>
+            <div className={`${styles.inputWrapper} ${nameError ? "error" : ""}`}>
+             
+              <div className={`${styles.inputContainer} ${nameError ? "error" : ""}`}>
               <label className={`input-label body-small ${nameError ? "error" : ""}`} htmlFor="name">
                 Imię
               </label>
-              <div className={`input-container ${nameError ? "error" : ""}`}>
                 <input
-                  className={`custom-input ${nameError ? "error" : ""}`}
+                  className={`${styles.customInput} ${nameError ? "error" : ""}`}
                   id="name"
                   type="text"
                   aria-invalid="false"
@@ -153,15 +165,16 @@ const ContactForm = () => {
 
                 />
               </div>
-              <span style={{ color: "red" }}>{nameError}</span>
+              <span style={{ color: "red", height:"18px" }}>{nameError}</span>
             </div>
-            <div className={`input-wrapper ${surnameError ? "error" : ""}`}>
+            <div className={`${styles.inputWrapper} ${surnameError ? "error" : ""}`}>
+            
+              <div className={`${styles.inputContainer} ${surnameError ? "error" : ""}`}>
               <label className={`input-label body-small ${surnameError ? "error" : ""}`} htmlFor="surname">
                 Nazwisko
               </label>
-              <div className={`input-container0 ${surnameError ? "error" : ""}`}>
                 <input
-                  className={`custom-input ${surnameError ? "error" : ""}`}
+                  className={`${styles.customInput} ${surnameError ? "error" : ""}`}
                   id="surname"
                   type="text"
                   aria-invalid="false"
@@ -172,17 +185,18 @@ const ContactForm = () => {
 
                 />
               </div>
-              <span style={{ color: "red" }}>{surnameError}</span>
+              <span style={{ color: "red", height:"18px" }}>{surnameError}</span>
             </div>
           </div>
-          <div className="formgroup">
-            <div className={`input-wrapper ${emailError ? "error" : ""}`}>
+          <div className={styles.formGroup}>
+            <div className={`${styles.inputWrapper} ${emailError ? "error" : ""}`}>
+             
+              <div className={`${styles.inputContainer} ${emailError ? "error" : ""}`}>
               <label className={`input-label body-small ${emailError ? "error" : ""}`} htmlFor="email">
                 Email
               </label>
-              <div className={`input-container ${emailError ? "error" : ""}`}>
                 <input
-                  className={`custom-input ${emailError ? "error" : ""}`}
+                  className={`${styles.customInput} ${emailError ? "error" : ""}`}
                   id="email"
                   type="email"
                   aria-invalid="false"
@@ -193,15 +207,16 @@ const ContactForm = () => {
 
                 />
               </div>
-              <span style={{ color: "red" }}>{emailError}</span>
+              <span style={{ color: "red", height:"18px" }}>{emailError}</span>
             </div>
-            <div className={`input-wrapper ${telephoneError ? "error" : ""}`}>
+            <div className={`${styles.inputWrapper} ${telephoneError ? "error" : ""}`}>
+ 
+  <div className={`${styles.inputContainer} ${telephoneError ? "error" : ""}`}>
   <label className={`input-label body-small ${telephoneError ? "error" : ""}`} htmlFor="telephone">
     Numer Telefonu
   </label>
-  <div className={`input-container ${telephoneError ? "error" : ""}`}>
     <input
-      className={`custom-input ${telephoneError ? "error" : ""}`}
+      className={`${styles.customInput} ${telephoneError ? "error" : ""}`}
       id="telephone"
       type="tel" // Zmiana typu na "tel"
       aria-invalid="false"
@@ -211,24 +226,21 @@ const ContactForm = () => {
       onFocus={() => handleInputFocus("telephone")}
     />
   </div>
-  <span style={{ color: "red" }}>{telephoneError}</span>
+  <span style={{ color: "red", height:"18px" }}>{telephoneError}</span>
 </div>
           </div>
-          <div
-            className={`textarea-wrapper ${messageError ? "error" : ""}`}
-            style={{
-              marginTop: messageError ? "40px" : "0px",
-              marginBottom: messageError ? "40px" : "0px",
-            }}
-          >
-            <label className={`textarea-label body-small ${messageError ? "error" : ""}`} htmlFor="message">
-              Wiadomość
-            </label>
-            <div className={`textarea-container ${messageError ? "error" : ""}`}>
+        
+      
+        
+            <div className={styles.textareaWrapper}>
+       <div className={`${styles.textareaContainer} ${messageError ? "error" : ""}`}>
+       <label className="textarea-label body-small-smaller-second" htmlFor="message">Wiadomość</label>
+    
               <textarea
-                className={`customtextarea ${messageError ? "error" : ""}`}
+                className={`${styles.textarea} ${messageError ? "error" : ""}`}
                 id="message"
                 aria-invalid="false"
+                placeholder="Podaj ilość sztuk, ilość żeber oraz ich wymiary (długość, szerokość, wysokość w cm)"
                 draggable="false"
                 value={message}
                 onChange={handleMessageChange}
@@ -236,13 +248,45 @@ const ContactForm = () => {
                 onFocus={() => handleInputFocus("message")}
               ></textarea>
             </div>
-            <span style={{ color: "red" }}>{messageError}</span>
+
+            <div
+            className={`${styles.textError} ${messageError ? "error" : ""}`}
+            
+          >
+              <span style={{ color: "red" }}>{messageError}</span>
+            </div>
+      </div>
+      {formProp ? null : (
+  <div>
+    <div className={`${styles.photoText} body-small-smaller-second`}>
+      <p className="p13">Zdjęcia grzejników</p>
+    </div>
+    <div className={styles.photoButton}>
+      <div className={styles.customFileInput}>
+        <button className={styles.customFileInputButton} type="button">
+          <div className={styles.customFileInputButtonInner}>
+            <span className={styles.customFileInputIcon}>
+              <Image src={Plus} alt="plus" />
+            </span>
+            <span className={`${styles.customFileInput} body-small-smaller-second`}>
+              Dodaj zdjęcia
+            </span>
           </div>
+        </button>
+        <input className={styles.customFileInputHidden} type="file" multiple="" />
+      </div>
+    </div>
+  </div>
+)}
+
+    
+          
 
           <button className="custom-submit-button button" type="submit" data-button="true">
             Wyślij zapytanie
           </button>
         </form>
+        </div>
     </>
   );
 };

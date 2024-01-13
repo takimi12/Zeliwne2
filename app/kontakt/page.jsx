@@ -2,18 +2,19 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Form from "./components/Form";
+import Form from "../components/Form/Form";
+import styles from "./kontakt.module.scss";
 
 const Contact = () => {
   const [data, setData] = useState(null);
 
-  console.log(data);
+let formProp = 1;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/190"
+          "https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/190"
         );
         const result = await response.json();
         setData(result);
@@ -27,17 +28,17 @@ const Contact = () => {
 
   return (
     <>
-          <section className="Contact">
+          <section className={styles.contact}>
 
-                   <div className="ContactDetails">
-                <div className="ContactDetailsWrapper">
+                   <div className={styles.contactDetails}>
+                <div className={styles.contactDetailsWrapper}>
                     {data && (
                         <>
-                          <h2 className="ContactMainHeading h2">{data.title.rendered}</h2>
+                          <h2 className="ContactMainHeading ">{data.title.rendered}</h2>
                 
                           {data.acf.contacts.map((contact, index) => (
                                                 
-                            <div className="ContactDetailsSmall">
+                            <div className={styles.contactDetailsSmall}>
                             <div className="Image">
                               <Image
                                 src={contact.icon.sizes.thumbnail}
@@ -47,13 +48,13 @@ const Contact = () => {
                               />
                               </div>
                               <div className="details">
-                              <h6 className="ContactParagraphDetails h6">{contact.bold}</h6>
+                              <h6 className={styles.ContactParagraphDetails}>{contact.bold}</h6>
                               <p>{contact.grey}</p>
                               </div>
                             </div>
                           ))}
                 
-                          <p className="companyAdress">{data.acf.bottom_grey}</p>
+                          <p className={styles.companyAdress}>{data.acf.bottom_grey}</p>
                         </>
                       )}
                   
@@ -61,7 +62,9 @@ const Contact = () => {
                 
                 </div>
             </div>
-            <Form />
+            <div className={styles.contactSection}>
+            <Form formProp={formProp}  />
+            </div>
             </section>
     </>
   );

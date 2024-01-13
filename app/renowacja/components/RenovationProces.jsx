@@ -13,7 +13,7 @@ const RenovationProces = ({ proces }) => {
           {process_steps.map((step, index) => (
             <div className="col-6" key={index}>
               <div className="foto">
-                <Image className="photo-section" 
+                <img className="photo-section" 
                 src={step.process_image.url} 
                 alt="leeerob"
                 fill={true}
