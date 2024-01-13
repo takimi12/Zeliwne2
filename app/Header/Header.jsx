@@ -4,12 +4,30 @@ import styles from './Header.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import kaloryfer from '../../public/static/Header/navikaloryfer.svg';
-
+import Logo from '../../public/static/Header/Logo.svg';
+import SecondLogo from '../../public/static/Header/logogreen.svg';
 // Separate component for API call and data fetching
-const App = () => {
+const Header = () => {
   const [categories, setCategories] = useState(null);
 
 
+  const [isScrolled, setIsScrolled] = useState(0);
+  const [headerclass, setheaderclass] = useState(0);
+
+  // ... existing code ...
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 100;
+      setIsScrolled(scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +57,7 @@ const App = () => {
   // Filter out the "Kontakt" category
   const filteredCategories = categories && categories.filter(category => category.title !== 'Kontakt');
   const kontaktCategory = categories && categories.find(category => category.title === 'Kontakt');
-
+  const headerParentClasses = `${styles.headerParent} ${isScrolled ? styles.scroll : ''}` || (headerclass ? styles.scroll : '');
 
 
   const [elementMenu, setElementMenu] = useState(null);
@@ -54,11 +72,14 @@ const App = () => {
     setElementMenu(product_id);
     setElementMenu1(product_id);
     setElementMenu2(null);
+    setheaderclass(1);
+
   };
   const MouseLeave = () => {
     setElementMenu(null);
     setElementMenu1(null);
     setElementMenu2(null);
+    setheaderclass(0);
   };
 
   const MouseEnterElementMenu1 = (product_id) => {
@@ -74,17 +95,46 @@ const App = () => {
 
   return (
     <>
+<header
+ onMouseLeave={MouseLeave}
+className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : headerParentClasses}`} >
+
+
+    <div className={(isScrolled ? styles.mainWrapper: styles.mainWrapperScroll)}
+
+    >
+    { isScrolled || elementMenu == 275  ? 
+   (
+    <div onMouseEnter={() => setElementMenu(0)}>
+      <Image
+      
+      src={SecondLogo} alt="Logo" 
+
+      />
+    </div>
+    ) : (
+    <div>
+      <Image src={Logo} alt="Logo" 
+
+      />
+    </div>
+    )}
     <div className={styles.header}>
+      
       <ul className={styles.menu}>
       {filteredCategories &&
             filteredCategories.map((category) => (
               <li key={category.title}>
-                  <Link href={category.url}>
-                    <p onMouseEnter={() => MouseEnterElementMenu(category.product_id)}
+                  <Link
+                  className={ isScrolled || elementMenu == 275 ? styles.second : '' }
+                  onMouseEnter={() => MouseEnterElementMenu(category.product_id,)}
+                    
+                   href={category.url}>
+                    
                    
-                    >
+                    
                       {category.title}
-                    </p>
+                    
                   </Link>
               </li>
             ))}
@@ -92,18 +142,21 @@ const App = () => {
 
       {/* Separate rendering for "Kontakt" category */}
       {kontaktCategory && (
-        <div className={styles.kontakt}>
-          <Link href={kontaktCategory.url}>
-            <p onClick={() => setActiveMenuItem(kontaktCategory.title)}>
+        <div className={styles.menu}>
+          <Link href={kontaktCategory.url}
+                  className={ isScrolled || elementMenu == 275 ? styles.second : '' }
+          >
+            
               {kontaktCategory.title}
-            </p>
+            
           </Link>
         </div>
       )}
     </div>
+    {elementMenu == 275 && (
     <div className={`${styles.secondLevel} ${elementMenu == 275 ? styles.active : styles.secondLevel}`}
-     onMouseLeave={MouseLeave}
     >
+    
           <div className={styles.secondLevelbelow}>
             {filteredCategories && filteredCategories.map(category => (
               <div key={category.title}>
@@ -114,7 +167,7 @@ const App = () => {
                       <div  key={subCategory.title} >
                         <Link href={subCategory.url}>
                           <p 
-                          className={`${subCategory.product_id}`}
+                          className={`${subCategory.product_id} `}
                           onMouseEnter={() => MouseEnterElementMenu1(subCategory.product_id)}
                           >
                             {subCategory.title}
@@ -210,13 +263,15 @@ const App = () => {
       ))}
     </>
   )}
+
+
 </div>
 </div>
-
-
-
+)}
+</div>
+</header>
           </>
   );
 };
 
-export default App;
+export default Header;

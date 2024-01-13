@@ -24,7 +24,7 @@ function MostPopular({ data }) {
             <SwiperSlide key={index}>
               <div className='SwiperSliderWrapper'>
                 <div className='SwipersSliderImage'>
-                <Image
+                <img
   src={item.image.url}
   alt={item.title}
   width={item.image.width} // Add this line

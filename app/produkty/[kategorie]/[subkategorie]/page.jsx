@@ -4,6 +4,7 @@ import styles from "./Subkategorie.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/breadcrumbs/breadcrumbs";
+import Series from "@/app/components/series/series";
 
 const ProductOneCategorySub = () => {
   const [categories, setCategories] = useState(null);
@@ -11,7 +12,7 @@ const ProductOneCategorySub = () => {
   const [lastSegment, setLastSegment] = useState(null);
   const [secondCategories, setsecondCategories] = useState(null);
 
-  console.log(mappedCategories, 'mappedCategories')
+
  
   const namesArray = (secondCategories && secondCategories.flatMap(item => item.categories) || []).slice(0, 2).map(item => item.name);
   const [firstIndex, secondIndex] = namesArray;
@@ -116,6 +117,7 @@ const ProductOneCategorySub = () => {
 ))}
       
       </section>
+      <Series  lastSegment2={lastSegment2}/>
     </>
   );
 };

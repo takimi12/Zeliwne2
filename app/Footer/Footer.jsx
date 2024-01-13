@@ -10,11 +10,11 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-logo-wrapper">
-        <Logo />
-      </div>
+      
       <div className="up">
-        {/* Renderowanie kategorii */}
+      <Logo />
+      
+
         <div className="footer-column">
           <p className="body-small-bigger-second">Kategorie</p>
           <ul>

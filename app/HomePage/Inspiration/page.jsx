@@ -4,11 +4,6 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import first from "../../../public/static/HomePage/first-main-photo.png";
-import second from "../../../public/static/HomePage/second-main-photo.png";
-import third from "../../../public/static/HomePage/third-main-photo.png";
-import fourth from "../../../public/static/HomePage/fourth-main-photo.png";
-import five from "../../../public/static/HomePage/five-main-photo.png";
 import arrow from "../../../public/static/HomePage/Arrows.png";
 import { SwiperNavButtons } from './helpers/SwiperNavButtons.jsx';
 import Inspiration from "../../../public/static/HomePage/InspirationPlus.svg";
@@ -93,14 +88,14 @@ const SectionSwiper = ({data}) => {
           {[...data, data[0], data[1]].map((inspiration, index) => (
             <SwiperSlide key={index}>
               <div className='hover-effect-div' onClick={() => handleImageClick(inspiration.image, index)}>
-                <Image
+                <img
                   src={inspiration.image.link}
                   alt={inspiration.image.title}
                   layout="fill"
                   objectFit="cover"
                 />
                 <div className='hover-effect-div-inner'>
-                  <Image src={Inspiration} alt="Logo" />
+                  <img src={Inspiration} alt="Logo" />
                   <h5 className='Look'>Zobacz</h5>
                 </div>
               </div>
@@ -126,7 +121,7 @@ const SectionSwiper = ({data}) => {
                 {[...data, data[0], data[1]].map((inspiration, index) => (
                   <SwiperSlide key={index}>
                     <div className="imageSecition">
-                      <Image src={inspiration.image.link} alt={inspiration.image.title} 
+                      <img src={inspiration.image.link} alt={inspiration.image.title} 
                         layout="fill"
                         objectFit="cover"
                       />
@@ -143,7 +138,7 @@ const SectionSwiper = ({data}) => {
                           <div className="bottoInfosecttionText" key={subIndex}>
                             <div className="photowithtext">
                               <div className="photo">
-                                <Image src={item.image.url} alt={item.image.alt}
+                                <img src={item.image.url} alt={item.image.alt}
                                   width={100}
                                   height={100}
                                 />
@@ -163,7 +158,7 @@ const SectionSwiper = ({data}) => {
                         <h6 className="h6-600 clickunder900">
                           {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
                         </h6>
-                        <Image className="popuparrow" src={arrow} alt="popuparrow" />
+                        <img className="popuparrow" src={arrow} alt="popuparrow" />
                       </div>
                     </div>
                   </SwiperSlide>

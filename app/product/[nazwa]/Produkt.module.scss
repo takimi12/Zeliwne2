@@ -15,19 +15,20 @@
 .leftSection{
   max-width: 55%;
   width: 100%;
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 1199px) {
     max-width: 100%;
    }
   img{
     width: 100%;
+    @media screen and (max-width: 1199px) {
+      padding-bottom: 30px;
+     }
   }
 }
 .rightSection{
   max-width: 35%;
   width: 100%;
-  @media screen and (max-width: 1199px) {
-    max-width: 40%;
-  }
+
   @media screen and (max-width: 900px) {
     max-width: 100%;
    }

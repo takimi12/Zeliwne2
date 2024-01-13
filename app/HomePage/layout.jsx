@@ -7,14 +7,17 @@ import Box from './FutureSection/page';
 import Renovation from './Renovation/page';
 import Opinion from './Opinion/page';
 import Featured from './Featured/page';
+import Series from '../components/series/series';
 
 const HomeLayout = () => {
   const [data, setData] = useState(null);
+  
+  let prop = 1;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/17');
+        const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/17');
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -35,6 +38,7 @@ const HomeLayout = () => {
     <>
       <Hero data1={acf.hero} />
       <Most data={acf.most} />
+      <Series prop={prop} />
       <Inspiration data={acf.inspirations} />
       <Box data={acf.box} />
       <Renovation data={acf.image_with_text} />

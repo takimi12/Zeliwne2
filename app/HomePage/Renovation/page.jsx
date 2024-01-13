@@ -26,7 +26,7 @@ const RenovationSection = ({ data }) => {
           </a>
         </div>
         <div className="RenovationSection-image">
-        <Image
+        <img
   src={url}
   alt={alt}
   layout="fill"

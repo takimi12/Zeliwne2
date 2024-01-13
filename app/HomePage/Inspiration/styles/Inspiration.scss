@@ -25,6 +25,7 @@
   .swiper-section-inspiration {
     overflow: hidden;
     margin-bottom: 40px;
+    margin-top: 60px;
   }
   
   .swiper-section-inspiration  .swiper-top {
@@ -32,8 +33,10 @@
     justify-content: space-between;
     align-items: center;
     order: 1;
+    
     .h4{
         margin-left: 40px;
+        padding: 60px 0px;
     }
     button:nth-child(1) img{
         transform: rotate(180deg);

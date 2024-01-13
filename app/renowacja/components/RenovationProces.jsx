@@ -1,5 +1,6 @@
+'use client';
 import React from "react";
-import {Image} from "next/image";
+import Image from "next/image";
 
 const RenovationProces = ({ proces }) => {
   const { title, process_steps } = proces;
@@ -14,9 +15,8 @@ const RenovationProces = ({ proces }) => {
               <div className="foto">
                 <Image className="photo-section" 
                 src={step.process_image.url} 
-                alt={step.process_image.title}
-                width={100}
-                height={100}
+                alt="leeerob"
+                fill={true}
                 />
               </div>
               <div className="text">

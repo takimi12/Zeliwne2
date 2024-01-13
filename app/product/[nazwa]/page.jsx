@@ -8,6 +8,7 @@ import Series from "../../components/series/series";
 import styles from './Produkt.module.scss';
 import Image from "next/image";
 import Box from "../components/Box";
+import Advantages from "../components/Advantages";
 
 import { SwiperPrev } from "@/app/components/swiper/swiperPrev";
 import { SwiperNext } from "@/app/components/swiper/swiperNext";
@@ -24,6 +25,8 @@ const ProductPageSingle = () => {
   const [totalSlides, setTotalSlides] = useState(0);
 
  
+
+
   useEffect(() => {
     const currentPath = window.location.pathname;
     let segments = currentPath.split('/').filter(segment => segment !== '');
@@ -66,6 +69,9 @@ const ProductPageSingle = () => {
 
     fetchData();
   }, [lastSegment]);
+
+
+
 
 
 
@@ -189,6 +195,9 @@ const ProductPageSingle = () => {
           </>
         )}
       </section>
+
+
+
       <section className={styles.special}>
 
 <div className={styles.parent} >
@@ -210,9 +219,9 @@ const ProductPageSingle = () => {
       />
     </div>
     </>
-  
 </div> 
 </section>
+<Series  />
     </>
   );
 };

@@ -57,11 +57,11 @@ const ProductOneCategorySub = () => {
 
   return (
     <>
-      <section className={styles.breadcrumbs}>
+    <section className={styles.breadcrumbs}>
       <Breadcrumbs lastSegmentProp={lastSegmentProp} lastSegment1={lastSegment1} />
    <h4>{lastSegment1}</h4>
 
-      </section>
+      </section> 
       <section className={styles.sectionProduct}>
   {categories &&
         categories.map((category) => (
