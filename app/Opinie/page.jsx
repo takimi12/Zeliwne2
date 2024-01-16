@@ -9,6 +9,8 @@ import Image from "next/image";
 const ClientsOpinion = () => {
   const [data, setData] = useState(null);
 
+console.log(data, 'data')
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,7 +33,7 @@ const ClientsOpinion = () => {
         {data && (
           <div className="mainHeading">
             <h3> {data.acf.header}</h3>
-            <Image 
+            <img 
             width={100}
             height={100}
             src={`${data.acf.header_stars.url}`}/>
@@ -54,7 +56,7 @@ const ClientsOpinion = () => {
 
               </div>
               <div className="WrapperOpinionRight">
-              <Image src={opinion.image.url} alt={opinion.title} width={326} height={325} />
+              <img src={opinion.image.url}  />
               </div>
             </div>
           ))}

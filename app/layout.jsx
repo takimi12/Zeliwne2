@@ -1,5 +1,6 @@
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
+import MobileHeader from './Header/MobileHeader';
 import './styles/globals.scss'
 import { Plus_Jakarta_Sans } from 'next/font/google'
  

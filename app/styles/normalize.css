@@ -1,3 +1,4 @@
+
 .h1big{
 color:#252727;
 font-size: 72px;
@@ -48,6 +49,15 @@ h1 {
     line-height: 130%; /* 28.6px */
     letter-spacing: -0.44px;
     }
+    .p17
+    {
+        color:#252727;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; /* 22.1px */
+    letter-spacing: -0.34px;
+    }
     h6 {
         
         font-size: 15px;
@@ -80,7 +90,7 @@ h1 {
         letter-spacing: 1.3px;
     }
     .p15{
-        /* color: var(--Black-300, #525555); */
+
         color: #525555;
 font-size: 15px;
 font-style: normal;
@@ -129,6 +139,15 @@ color: #939899;
         font-style: normal;
         line-height: 145%; /* 18.85px */
         letter-spacing: 1.3px;
+    }
+    .p11{
+        color:  #252727;
+font-size: 11px;
+font-style: normal;
+font-weight: 800;
+line-height: 130%; /* 14.3px */
+letter-spacing: 1.1px;
+text-transform: uppercase;
     }
     
     .button {

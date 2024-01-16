@@ -2,11 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import styles from "./Biznes.module.scss"
 
 const ForBusiness = () => {
   const [data, setData] = useState(null);
 
-  console.log(data, 'biznes');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,35 +30,33 @@ const ForBusiness = () => {
     <>
 
 
-      <section className="ForBusiness">
-        <div className="ForBusinessTitleText">
-         <h3 className="MainHeading h3">{heading}</h3>
-          <p className="MainParagraph big-text">{underHeading}</p>
+      <section className={styles.forBusiness}>
+        <div className={styles.forBusinessTitleText}>
+         <h3 className={styles.mainHeading}>{heading}</h3>
+          <p className={`big-text ${styles.mainParagraph}`}>{underHeading}</p>
           
            </div>
       </section>
 
-      <div className="BusinesContentWrapper">
+      <section className={styles.businesContentWrapper}>
         {data?.acf?.asymetric.map((item, index) => (
-            <div className="ContentWrapper">
-          <div className="ImageContent" key={index}>
-            <Image
-              className="Image"
+            <div className={styles.contentWrapper}>
+          <div className={styles.imageContent} key={index}>
+            <img
+              className={styles.image}
               src={item.photo.url}
               alt={item.title}
-              width={item.photo.width}
-              height={item.photo.height}
-            />
+               />
           </div>
-          <div className="TextContent" key={index}>
-            <div className="TextContentInner">
-              <h4 className="TextConentHeading h4">{item.title}</h4>
-              <h6 className="TextConentParagraph h6">{item.paragraph}</h6>
+          <div className={styles.textContent} key={index}>
+            <div className={styles.textContentInner}>
+              <h4 className={styles.textContentHeading}>{item.title}</h4>
+              <p className={`p-15 ${styles.textContentParagraph}`}>{item.paragraph}</p>
             </div>
           </div>
             </div>
         ))}
-      </div>
+      </section>
     </>
   );
 };
