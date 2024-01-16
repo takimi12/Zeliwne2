@@ -12,7 +12,7 @@ const ClientsOpinion = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/159');
+        const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/159');
         const result = await response.json();
         setData(result);
       } catch (error) {

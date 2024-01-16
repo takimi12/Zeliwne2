@@ -4,8 +4,9 @@ import styles from './Header.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
 import kaloryfer from '../../public/static/Header/navikaloryfer.svg';
-import Logo from '../../public/static/Header/Logo.svg';
+import Logo from '../../public/static/Header/Logo.jsx';
 import SecondLogo from '../../public/static/Header/logogreen.svg';
+import { useRouter } from 'next/navigation';
 // Separate component for API call and data fetching
 const Header = () => {
   const [categories, setCategories] = useState(null);
@@ -29,6 +30,8 @@ const Header = () => {
     };
   }, []);
 
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -50,19 +53,52 @@ const Header = () => {
   }, []);
 
 
-
-
-
-
-  // Filter out the "Kontakt" category
-  const filteredCategories = categories && categories.filter(category => category.title !== 'Kontakt');
-  const kontaktCategory = categories && categories.find(category => category.title === 'Kontakt');
-  const headerParentClasses = `${styles.headerParent} ${isScrolled ? styles.scroll : ''}` || (headerclass ? styles.scroll : '');
-
-
   const [elementMenu, setElementMenu] = useState(null);
   const [elementMenu1, setElementMenu1] = useState(null);
   const [elementMenu2, setElementMenu2] = useState(null);
+  const [LogoImage, setLogoImage] = useState(0);
+
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    let segments = currentPath.split('/').filter(segment => segment !== '');
+
+
+
+    if (segments.includes('produkty') || segments.includes('renowacja') || segments.includes('Opinie') || segments.includes('kontakt')|| segments.includes('product')) {
+      setLogoImage(275);
+    } 
+    if (segments.includes('produkty') && segments.length === 3) {
+      // Obsługa przypadku "produkty"
+      setLogoImage(0);
+    } 
+
+  }, [window.location.pathname]);
+
+
+  const filteredCategories = categories && categories.filter(category => category.title !== 'Kontakt');
+  const kontaktCategory = categories && categories.find(category => category.title === 'Kontakt');
+  const router = useRouter();
+
+
+
+
+  let headerParentClasses = `${styles.headerParent} ${isScrolled ? styles.scroll : ''}`;
+
+  const currentPath = window.location.pathname;
+  let segments = currentPath.split('/').filter(segment => segment !== '');
+  if (  segments.includes('renowacja') || segments.includes('Opinie') || segments.includes('kontakt') || segments.includes('product')) {
+    headerParentClasses = `${styles.headerParent1} `;
+
+  }
+
+  if (segments.includes('produkty') && segments.length === 2) {
+    // Obsługa przypadku "produkty"
+    headerParentClasses = `${styles.headerParent1} `;
+  } 
+  if (segments.includes('produkty') && segments.length === 1) {
+    // Obsługa przypadku "produkty"
+    headerParentClasses = `${styles.headerParent1} `;
+  } 
 
   
 
@@ -103,7 +139,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
     <div className={(isScrolled ? styles.mainWrapper: styles.mainWrapperScroll)}
 
     >
-    { isScrolled || elementMenu == 275  ? 
+    {LogoImage || isScrolled || elementMenu == 275  ? 
    (
     <div onMouseEnter={() => setElementMenu(0)}>
       <Image

@@ -17,6 +17,7 @@ import car from "../../../public/static/ProductPage/cardeliver.svg";
 import telephone from "../../../public/static/ProductPage/telephonepage.svg";
 import post from "../../../public/static/ProductPage/postproductpage.svg";
 
+
 const ProductPageSingle = () => {
   const [products, setProducts] = useState(null);
   const [lastSegment, setLastSegment] = useState(null);
@@ -25,7 +26,6 @@ const ProductPageSingle = () => {
   const [totalSlides, setTotalSlides] = useState(0);
 
  
-
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -195,32 +195,10 @@ const ProductPageSingle = () => {
           </>
         )}
       </section>
+<Advantages lastSegment={lastSegment} />
 
 
-
-      <section className={styles.special}>
-
-<div className={styles.parent} >
-
-    <>
-    <div className={styles.bottomSectionContent} >
-      {/* Displaying the content from bottom_section */}
-      <p className="p138"></p>
-      <h1 className={`h1-big ${styles.mainHeading}`}></h1>
-      <p className="p15"></p>
-
-
-    </div>
-      <div className={styles.bottomSectionImage}>
-      <Image
-
-        width={400}
-        height={300}
-      />
-    </div>
-    </>
-</div> 
-</section>
+ 
 <Series  />
     </>
   );

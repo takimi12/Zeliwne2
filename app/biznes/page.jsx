@@ -6,10 +6,12 @@ import Image from "next/image";
 const ForBusiness = () => {
   const [data, setData] = useState(null);
 
+  console.log(data, 'biznes');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://grzejniki.ergotree.pl/wp-json/wp/v2/pages/178');
+        const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/178');
         const result = await response.json();
         setData(result);
       } catch (error) {
@@ -20,15 +22,20 @@ const ForBusiness = () => {
     fetchData();
   }, []);
 
+  const heading = data?.acf?.heading || "";
+  const underHeading = data?.acf?.under_heading || "";
+
+
   return (
     <>
 
 
       <section className="ForBusiness">
         <div className="ForBusinessTitleText">
-          <h3 className="MainHeading h3">Oferta dla biznesu</h3>
-          <p className="MainParagraph big-text">Are incentivize speed point social beforehand marginalised. Hill unpack breakout disband price get eco-system. Anyway food adoption before shelf-ware meeting driver's today.</p>
-        </div>
+         <h3 className="MainHeading h3">{heading}</h3>
+          <p className="MainParagraph big-text">{underHeading}</p>
+          
+           </div>
       </section>
 
       <div className="BusinesContentWrapper">

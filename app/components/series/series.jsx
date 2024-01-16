@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,11 +12,22 @@ import SwiperNav from './SwiperNav';
 function Series({ lastSegment2, seriesProp, prop }) {
   const [categories, setCategories] = useState(null);
   const [lastSegment, setLastSegment] = useState(null);
- 
+  const [isAtBeginning, setIsAtBeginning] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+
+  const handleReachEnd = () => {
+    setIsAtBeginning(false);
+    setIsAtEnd(true);
+  };
+
+  const handleReachBeginning = () => {
+    setIsAtBeginning(true);
+    setIsAtEnd(false);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        
         if (lastSegment2 == undefined || null) {
           const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wc/v3/products/categories?per_page=100', {
             method: 'GET',
@@ -26,7 +38,6 @@ function Series({ lastSegment2, seriesProp, prop }) {
           });
           const result = await response.json();
 
-          // Filter categories where parent is equal to 0 and exclude "Bez kategorii"
           const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
           setCategories(filteredCategories);
         } else if (lastSegment2) {
@@ -39,7 +50,6 @@ function Series({ lastSegment2, seriesProp, prop }) {
           });
           const result = await response.json();
 
-          // Filtruj kategorie, które mają parent równy 0
           const filteredCategories = result.filter(category => category.parent == lastSegment2);
           setCategories(filteredCategories);
 
@@ -47,7 +57,7 @@ function Series({ lastSegment2, seriesProp, prop }) {
           setLastSegment(filteredLastSegment);
         }
       } catch (error) {
-
+        // Handle error
       }
     };
 
@@ -83,21 +93,23 @@ function Series({ lastSegment2, seriesProp, prop }) {
                   spaceBetween: 40,
                 },
               }}
+              onReachEnd={handleReachEnd}
+              onReachBeginning={handleReachBeginning}
             >
               <div className={styles.topParent}>
-              {prop !== null ? (
-  <h4>Kategorie Produktów</h4>
-) : (
-  <>
-    {lastSegment2 == null || lastSegment2 === undefined ? (
-      <h4>Pozostałe Kategorie</h4>
-    ) : (
-      <h4>Pozostałe serie</h4>
-    )}
-  </>
-)}
+                {prop !== null ? (
+                  <h4>Kategorie Produktów</h4>
+                ) : (
+                  <>
+                    {lastSegment2 == null || lastSegment2 === undefined ? (
+                      <h4>Pozostałe Kategorie</h4>
+                    ) : (
+                      <h4>Pozostałe serie</h4>
+                    )}
+                  </>
+                )}
                 <div className={styles.arrowParent}>
-                  <SwiperNav />
+                  <SwiperNav first={isAtBeginning} last={isAtEnd} />
                 </div>
               </div>
 

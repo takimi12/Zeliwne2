@@ -36,6 +36,7 @@ const ProductOneCategorySub = () => {
           // Jeśli lastSegment lub lastSegment2 nie został przekazany, nie wykonuj żadnych operacji
           return;
         }
+//        const response = await fetch("https://grzejniki2.ergotree.pl/wp-json/wc/v3/products?category=16&per_page=100", {
 
         const response = await fetch("https://grzejniki2.ergotree.pl/wp-json/wc/v3/products?per_page=100", {
           method: 'GET',
@@ -123,3 +124,4 @@ const ProductOneCategorySub = () => {
 };
 
 export default ProductOneCategorySub;
+

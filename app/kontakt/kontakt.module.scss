@@ -15,6 +15,7 @@ gap: 15%;
     }
     .contactDetails {
    z-index: 1;
+   min-width: 300px;
    @media screen and (max-width: 991px) {
     display: flex;
     justify-content: center;
@@ -33,6 +34,7 @@ gap: 15%;
     padding: 27px 0px;
     width: 100%;
     align-items: center;
+    gap: 15px;
 }
 
 

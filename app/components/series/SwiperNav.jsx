@@ -1,21 +1,30 @@
 // SwiperNav.js
 import React from 'react';
 import { useSwiper } from 'swiper/react';
-import ArrowNext from "../../../public/static/components/Arrowbacj.svg";
-import ArrowPrev from "../../../public/static/components/Arrownext.svg";
-import Image from 'next/image';
 import styles from './Swiper.module.scss';
 
-const SwiperNav = () => {
+import ArrowPrev from "../../../public/static/components/ArrowPrev.jsx";
+import ArrowNext from "../../../public/static/components/ArrowNext.jsx";
+
+
+const SwiperNav = ({first, last}) => {
   const swiper = useSwiper();
+
+
+   
 
   return (
     <>
-<Image  onClick={() => swiper.slidePrev()}
-width={40} height={40} src={ArrowNext} />
-     <Image 
-      onClick={() => swiper.slideNext()}
-      width={40} height={40} src={ArrowPrev} />
+   <ArrowPrev
+        onClick={() => swiper.slidePrev()}
+        className={first ? styles.unactive : styles.active} 
+      />
+      <ArrowNext
+        onClick={() => swiper.slideNext()}
+        className={last ? styles.unactive : styles.active}
+      />
+
+ 
     </>
   );
 };
