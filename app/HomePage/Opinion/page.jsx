@@ -1,6 +1,4 @@
 import React from "react";
-import certificate from "../../../public/static/HomePage/certificate-check.png";
-import star from "../../../public/static/HomePage/Star-1.png";
 import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
@@ -36,14 +34,14 @@ const Clients = ({ data }) => {
               <div className="client-opinion">
                 <div className="client-opinion-wrapper">
                   <div className="star">
-                    {Array.from({ length: parseInt(opinion.star) }).map((_, starIndex) => (
+                    {/* {Array.from({ length: parseInt(opinion.star) }).map((_, starIndex) => (
                       <Image key={starIndex} src={star} alt="Star" />
-                    ))}
+                    ))} */}
                   </div>
                   <h6 className="h6-third">{opinion.content}</h6>
                   <h6 className="h6-300">{opinion.subtitle}</h6>
                   <div className="sign">
-                    <Image src={certificate} alt="Certificate" />
+                    {/* <Image src={certificate} alt="Certificate" /> */}
                     <h6 className="h6-300">
                       {opinion.name}{" "}
                       <span className="body-small-smaller">{`from ${opinion.from}`}</span>

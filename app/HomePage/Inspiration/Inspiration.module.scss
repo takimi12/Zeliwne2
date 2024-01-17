@@ -1,0 +1,198 @@
+.swiperSectionInspiration {
+    overflow: hidden;
+    margin-bottom: 40px;
+    margin-top: 60px;
+  
+    .swiper {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+  
+      .Top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        order: 1;
+  
+        .h4 {
+          margin-left: 40px;
+          padding: 60px 0px;
+        }
+      }
+  
+      .wrapperClass {
+        display: flex;
+        order: 2;
+      }
+  
+      .slide {
+        display: flex;
+        justify-content: center;
+        width: 386px !important;
+        margin-right: 181px;
+        padding: 0;
+        height: 618px;
+      }
+  
+      .popup .slide {
+        height: 100%;
+      }
+  
+
+    }
+  
+    .hoverEffectDiv {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      cursor: pointer;
+    }
+  
+    .hoverEffectDivInner {
+      opacity: 0;
+      transition: 0.3s;
+    }
+  
+    .hoverEffectDiv:hover .hoverEffectDivInner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #244b55;
+      opacity: 0.7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      transition: 0.3s;
+  
+      .Look {
+        color: #fff;
+        font-size: 30px;
+        margin-top: 20px;
+      }
+    }
+  
+    .popupOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+  
+    .popup {
+      position: relative;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: auto;
+      position: relative;
+      top: 18px;
+      width: 80%;
+      display: flex;
+      max-height: 600px;
+  
+      .swiper {
+        padding: 0;
+      }
+  
+      .slide {
+        width: 100% !important;
+        height: 100%;
+        display: flex;
+        justify-content: start;
+        margin: 0;
+      }
+  
+      .imageSection {
+        position: relative;
+        width: 75%;
+  
+        button {
+          background-color: #fff;
+        }
+      }
+  
+      .info {
+        width: 25%;
+        padding: 38px;
+        position: relative;
+        overflow-y: scroll;
+        .topInfoSection{
+            position: relative;
+        }
+  
+        .bottomInfoSection {
+          padding-top: 67px;
+          padding-bottom: 80px;
+          .firstParagraph{
+            margin-bottom: 24px;
+          }
+        }
+  
+        .photoWithText {
+          display: flex;
+          margin-top: 20px;
+  
+          .photo {
+            margin-right: 10px;
+            max-width: 50px;
+            max-height: 50px;
+        img{
+            width: 50px;
+            height: 50px;
+        } 
+        }
+        }
+  
+        .buttonwraper {
+          position: absolute;
+          top: 0px;
+          margin-top: 38px;
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+  
+      .closeButton {
+        position: absolute;
+        top: -20;
+        right: 0px;
+        background-color: #000;
+        border: none;
+        cursor: pointer;
+        height: 20px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        padding: 5px;
+        z-index: 8;
+      }
+    }
+  
+    .popup-active {
+      overflow: hidden;
+    }
+  
+    .configurationUnder900 {
+      display: none;
+  
+      &:after {
+        content: 'prev';
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+}

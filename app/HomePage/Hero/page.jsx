@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Hero.module.scss";
 
 const Hero = ({ data1 }) => {
 
@@ -13,13 +14,13 @@ const Hero = ({ data1 }) => {
   };
 
   return (
-    <div>
+    <>
       {data1.map((heroItem, index) => (
-        <div key={index} className="Hero" style={heroStyle}>
-          <div className="text-center">
-            <div className="text-center-setting">
+        <section key={index} className={styles.hero} style={heroStyle}>
+          <div className={styles.textCenter}>
+            <div className={styles.textCenterSetting}>
               <span className="eyebrowheader">{heroItem.small_title}</span>
-              <h3 className="display-second">{heroItem.title}</h3>
+              <h1 className={styles.displaySecond}>{heroItem.title}</h1>
               <button
                 className="button h6-500"
                 onClick={() => window.location.href = heroItem.link.url}
@@ -28,9 +29,9 @@ const Hero = ({ data1 }) => {
               </button>
             </div>
           </div>
-        </div>
+        </section>
       ))}
-    </div>
+    </>
   );
 };
 

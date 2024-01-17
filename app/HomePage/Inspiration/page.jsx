@@ -4,10 +4,10 @@ import 'swiper/css';
 import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import arrow from "../../../public/static/HomePage/Arrows.png";
-import { SwiperNavButtons } from './helpers/SwiperNavButtons.jsx';
-import Inspiration from "../../../public/static/HomePage/InspirationPlus.svg";
 import Image from "next/image";
+import SwiperNav from "@/app/components/series/SwiperNav";
+import styles from "./Inspiration.module.scss";
+import Plus from "@/public/static/Inspiration/Plus.jsx";
 
 const SectionSwiper = ({data}) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -16,6 +16,19 @@ const SectionSwiper = ({data}) => {
   const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
   const [isBottomSectionExpanded, setIsBottomSectionExpanded] = useState(false);
   const [isConfigurationClicked, setIsConfigurationClicked] = useState(false);
+  const [isAtBeginning, setIsAtBeginning] = useState(true);
+  const [isAtEnd, setIsAtEnd] = useState(false);
+
+  const handleReachEnd = () => {
+    setIsAtBeginning(false);
+    setIsAtEnd(true);
+  };
+
+  const handleReachBeginning = () => {
+    setIsAtBeginning(true);
+    setIsAtEnd(false);
+  };
+
 
   const handleImageClick = (image, index) => {
     setSelectedImage(image);
@@ -65,46 +78,43 @@ const SectionSwiper = ({data}) => {
 
   return (
     <>
-      <section className='swiper-section-inspiration'>
+      <section className={styles.swiperSectionInspiration}>
         <Swiper
           spaceBetween={20}
           slidesPerView={4}
           slidesOffsetBefore={40}
-          navigation
-          initialSlide={1}
-          loop={true} 
-          onSlideChange={(swiper) => {
-            const currentIndex = swiper.activeIndex;
-            const lastIndex = swiper.slides.length - 2;
-
-            if (currentIndex === lastIndex) {
-              swiper.slideTo(1, 0, false);
-            }
-          }}
+          className={styles.swiper}
+          wrapperClass={styles.wrapperClass}
+          onReachEnd={handleReachEnd}
+          onReachBeginning={handleReachBeginning}
+      
         >
-          <div className='swiper-top'>
+          <div className={styles.swiperTop}>
             <h4 className="h4">Inspiracje</h4>
+            <div className="arrowParent">
+            <SwiperNav  first={isAtBeginning} last={isAtEnd}/> 
+          </div>
           </div>
           {[...data, data[0], data[1]].map((inspiration, index) => (
-            <SwiperSlide key={index}>
-              <div className='hover-effect-div' onClick={() => handleImageClick(inspiration.image, index)}>
+            <SwiperSlide key={index} className={styles.slide}>
+              <div className={styles.hoverEffectDiv} onClick={() => handleImageClick(inspiration.image, index)}>
                 <img
                   src={inspiration.image.link}
                   alt={inspiration.image.title}
                   layout="fill"
                   objectFit="cover"
                 />
-                <div className='hover-effect-div-inner'>
-                  <img src={Inspiration} alt="Logo" />
-                  <h5 className='Look'>Zobacz</h5>
+                <div className={styles.hoverEffectDivInner}>
+                  <Plus />
+                  <h5 className={styles.Look}>Zobacz</h5>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
         {showPopup && (
-          <div ref={popupRef} className="popup-overlay" onClick={closePopup}>
-            <div className="popup" onClick={handlePopupClick}>
+          <div ref={popupRef} className={styles.popupOverlay} onClick={closePopup}>
+            <div className={styles.popup} onClick={handlePopupClick}>
               <Swiper
                 slidesPerView={1}
                 loop={true} 
@@ -119,25 +129,32 @@ const SectionSwiper = ({data}) => {
                 }}
               >
                 {[...data, data[0], data[1]].map((inspiration, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="imageSecition">
+                  <SwiperSlide  className={styles.slide} key={index}>
+                    <div className={styles.imageSection}>
                       <img src={inspiration.image.link} alt={inspiration.image.title} 
                         layout="fill"
                         objectFit="cover"
                       />
                     </div>
-                    <div className={`info ${isBottomSectionExpanded ? 'expanded' : ''}`}>
-                      <div className="TopInfoSection">
+                    <div className={`${styles.info} ${isBottomSectionExpanded ? 'expanded' : ''}`}>
+                 
+                      <div className={styles.topInfoSection}>
+                      <div className="buttoninnerWrapper">
+              <button className={styles.closeButton} onClick={closePopup}>
+                X
+              </button>
+            </div>
                         <h5 className="h5">{inspiration.title}</h5>
-                        <p className="body-small-smaller-third">{inspiration.height}</p>
-                        <p className="body-small-smaller-third">{inspiration.count_column}</p>
+                        <p className="p-13">Ilość kolumn:{inspiration.count_column}</p>
+                        <p className="p-13">Wysokość:{inspiration.height}</p>
+                      
                       </div>
-                      <div className="BottomInfoSection">
-                        <h3 className="h6-600-third">Konfiguracja ze zdjęcia</h3>
+                      <div className={styles.bottomInfoSection}>
+                        <p className={`p15six ${styles.firstParagraph}`}>Konfiguracja ze zdjęcia</p>
                         {inspiration.config.map((item, subIndex) => (
                           <div className="bottoInfosecttionText" key={subIndex}>
-                            <div className="photowithtext">
-                              <div className="photo">
+                            <div className={styles.photoWithText}>
+                              <div className={styles.photo}>
                                 <img src={item.image.url} alt={item.image.alt}
                                   width={100}
                                   height={100}
@@ -151,25 +168,21 @@ const SectionSwiper = ({data}) => {
                           </div>
                         ))}
                       </div>
-                      <div className="buttonwraper">
+                      <div className>
                         <button><a href="#">Zobacz produkt</a></button>
                       </div>
-                      <div className="ConfigurationUnder900" onClick={handleConfigurationClick}>
+                      <div className={styles.configurationUnder900} onClick={handleConfigurationClick}>
                         <h6 className="h6-600 clickunder900">
                           {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
                         </h6>
-                        <img className="popuparrow" src={arrow} alt="popuparrow" />
+                        {/* <img className="popuparrow" src={arrow} alt="popuparrow" /> */}
                       </div>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
             </div>
-            <div className="buttoninnerWrapper">
-              <button className="close-button" onClick={closePopup}>
-                X
-              </button>
-            </div>
+       
           </div>
         )}
       </section>

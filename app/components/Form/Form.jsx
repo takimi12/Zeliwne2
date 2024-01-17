@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from  "./Form.module.scss";
-import Plus from "../../../public/static/Renowacja/Form/plus-form.svg";
+// import Plus from "../../../public/static/Renowacja/Form/plus-form.svg";
 import Image from "next/image";
 
 
@@ -266,7 +266,7 @@ const ContactForm = ({formProp}) => {
         <button className={styles.customFileInputButton} type="button">
           <div className={styles.customFileInputButtonInner}>
             <span className={styles.customFileInputIcon}>
-              <Image src={Plus} alt="plus" />
+              {/* <Image src={Plus} alt="plus" /> */}
             </span>
             <span className={`${styles.customFileInput} body-small-smaller-second`}>
               Dodaj zdjęcia
