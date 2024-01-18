@@ -4,20 +4,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import styles from './FutureSection.module.scss';
 
 const FutureSection = ({ data }) => {
-  const breakpoints = {
-    300: {
-      slidesPerView: 1,
-    },
-    800: {
-      slidesPerView: 2,
-    },
-    1100: {
-      slidesPerView: 3,
-    },
-  };
-
   const pagination = {
     clickable: true,
     renderBullet: function (index, className) {
@@ -25,32 +14,43 @@ const FutureSection = ({ data }) => {
     },
   };
 
+  const breakpoints = {
+    400: {
+      slidesPerView: 1,
+    },
+  800: {
+      slidesPerView: 2,
+    },
+    1200: {
+      slidesPerView: 3,
+    },
+  };
+
   return (
-    <section className="FutureSection">
+    <section className={styles.futureSection}>
       <Swiper
         pagination={pagination}
         modules={[Pagination]}
-        className="mySwiper"
+        className={styles.swiper}
         spaceBetween={20}
         slidesPerView={3}
         slidesOffsetBefore={40}
-        breakpoints={breakpoints}
+        breakpoints={breakpoints} // Dodaj breakpoints do Swipera
       >
         {data.map((feature, index) => (
-          <SwiperSlide key={index}>
-            <div className="Feature">
-              <div className="FeatureWrapper">
+          <SwiperSlide key={index} className={styles.swiperSlide}>
+            <div className={styles.feature}>
+              <div className={styles.featureWrapper}>
                 <div className="FeatureIcon">
-                <Image
-          src={feature.icon.url}
-          alt={feature.icon.alt}
-          width={50}
-          height={50}
- 
-        />
+                  <Image
+                    src={feature.icon.url}
+                    alt={feature.icon.alt}
+                    width={50}
+                    height={50}
+                  />
                 </div>
-                <h2 className="FeatureTitle h6-600-third">{feature.title}</h2>
-                <div className="FeatureDescription h6">{feature.description}</div>
+                <p className={`${styles.featureTitle} p15six`}>{feature.title}</p>
+                <p className={`${styles.featureDescription} p15`}>{feature.description}</p>
               </div>
             </div>
           </SwiperSlide>

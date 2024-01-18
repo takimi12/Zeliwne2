@@ -5,7 +5,10 @@ font-size: 72px;
 font-style: normal;
 font-weight: 500;
 line-height: 115%; /* 82.8px */
-letter-spacing: -2.88px
+letter-spacing: -2.88px;
+@media screen and (max-width: 991px) {
+    font-size: 42px;
+  }
 }
 h1 {
     
@@ -115,6 +118,15 @@ line-height: 145%; /* 21.75px */
     font-weight: 400;
     line-height: 145%; /* 18.85px */
 }
+.p13brown{
+   color: #93411F;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 130%; /* 16.9px */
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
 
 .p138
 {
@@ -204,84 +216,13 @@ text-transform: uppercase;
         .display-second{
             color:  #FBF9F7;
         text-align: right;
-        
         font-size: 72px;
         font-style: normal;
         font-weight: 500;
         line-height: 115%; 
         letter-spacing: -2.88px;
         }
-        .h1 {
-            color: #000;
-        font-weight: 600;
         
-        }
-        .h1-smaller {
-            color:  #252727;
-            font-weight: 600;
-        }
-        
-        .h2 {
-            color: #000;
-        font-weight: 600;
-        
-        }
-        .h3 {
-            color:  #252727;
-            font-size: 32px;
-            font-style: normal;
-        }
-        
-        .h4 {
-            color:  #252727;
-            font-weight: 600;
-        }
-        
-        .h5{
-            color:  #252727;
-        font-weight: 600;
-        }
-        
-        .h6 {
-            color:  #525555;
-            font-weight: 400;
-        }
-        .h6-500{
-            color:  #FAFAFA;
-                font-weight: 500;
-        }
-        .h6-600 {
-            color:  #252727;
-        
-        font-weight: 600;
-        }
-        .h6-600-second
-        {
-            color:  #244B55;
-        font-weight: 600;
-        }
-        .h6-600-third
-        {
-            color:  #252727;
-        font-weight: 600;
-        }
-        .h6-400-third
-        {
-            color:  #252727;
-        font-weight: 400;
-        }
-        .h6-300 {
-            color:  #525555;
-            font-weight: 400;
-        }
-        .h6-500{
-            color:  #E4E5E6;
-        font-weight: 500;
-        }
-        .h6-400-second{
-        color:  #3C3E3E;
-        font-weight: 400;
-        }
         .big-text {
             color: #525555;
         font-family:"Plus Jakarta Sans";
@@ -291,7 +232,7 @@ text-transform: uppercase;
         line-height: 150%; 
         letter-spacing: 0.17px;
         }
-        .body-small-bigger{
+        .bodySmallBigger{
             color:  #244B55;
         font-weight: 800;
         line-height: 130%; 
@@ -303,12 +244,6 @@ text-transform: uppercase;
             text-transform: uppercase;
         }
         
-        .body-small-brown
-        {
-            color:  #93411F;
-        font-weight: 800;
-        text-transform: uppercase;
-        }
         
         .body-small
         {
@@ -316,7 +251,7 @@ text-transform: uppercase;
         font-weight: 400;
         }
         
-        .body-small-smaller
+        .bodySmallSmaller
         {
             color:  #939899;
             font-weight: 400;

@@ -38,12 +38,12 @@ const HomeLayout = () => {
     <>
       {/* <Hero data1={acf.hero} />
       <Most data={acf.most} />
-      <Series prop={prop} /> */}
-      <Inspiration data={acf.inspirations} />
-      {/* <Box data={acf.box} />
-      <Renovation data={acf.image_with_text} />
+      <Series prop={prop} />
+      <Inspiration data={acf.inspirations} /> */}
+      {/* <Box data={acf.box} /> */}
+      {/* <Renovation data={acf.image_with_text} /> */}
       <Opinion data={acf.opinion} />
-      <Featured data={acf.last_block_homepage} /> */}
+      <Featured data={acf.last_block_homepage} />
     </>
   );
 };

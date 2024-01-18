@@ -6,7 +6,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 
-import  slidesData  from "../data/AdsBottomData";
 import Image from "next/image";
 
 

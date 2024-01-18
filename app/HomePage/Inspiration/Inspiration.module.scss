@@ -196,3 +196,93 @@
       }
     }
 }
+// 0. Zdjęcia do danego produktu na popupie
+// 1. Responsywność popupu
+// 2. responsywnosc sekcji
+
+@media screen and (max-width: 1100px) {
+  .popup .foto {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .popup .swiper-slide {
+    flex-direction: column;
+  }
+
+  .PopupMainImage {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .imageSecition .swiper-nav-btns {
+    position: absolute;
+    top: 130px;
+  }
+
+  .popup .swiper-slide {
+    flex-direction: column;
+  }
+
+  .configurationUnder900 {
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+  }
+
+
+
+  .popup .imageSecition {
+    width: 100%;
+  }
+
+  .popup .info {
+    width: 100%;
+    position: relative;
+    max-width: 75%;
+  }
+
+  .popup .info .buttonwraper {
+    position: absolute;
+    top: 0px;
+    margin-top: 38px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .swiper-section-inspiration .BottomInfoSection {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0;
+  }
+
+  .swiper-section-inspiration .info.expanded .BottomInfoSection {
+    max-height: 350px;
+  }
+
+  .swiper-section-inspiration .ConfigurationUnder900 {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .popup .info .buttonwraper {
+    margin-left: -7%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .popup .info .buttonwraper {
+    margin-left: -12%;
+  }
+}
+

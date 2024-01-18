@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import styles from "./Renovation.module.scss";
 
 const RenovationSection = ({ data }) => {
   const {
@@ -11,21 +12,21 @@ const RenovationSection = ({ data }) => {
   } = data;
 
   return (
-    <section className="RenovationSection">
-      <div className="RenovationSection-content">
-        <div className="RenovationSection-text">
-          <div className="RenovationSection-title">
-            <span className="body-small-bigger">{small_title}</span>
+    <section className={styles.renovationSection}>
+      <div className={styles.renovationSectionContent}>
+        <div className={styles.renovationSectionText}>
+          <div className={styles.renovationSectionTitle}>
+            <p className="p138">{small_title}</p>
           </div>
-          <h6 className="RenovationSection-heading display">{title}</h6>
-          <div className="RenovationSection-description h6-300">{description}</div>
+          <h1 className={`${styles.renovationSectionHeading} h1big`}>{title}</h1>
+          <div className={styles.renovationSectionDescription}><p className="p15">{description}</p></div>
           <a href={link.url} target={link.target} rel="noopener noreferrer">
-            <button className="RenovationSection-button button" type="button">
+            <button className={`${styles.renovationSectionButton} button`} type="button">
               {link.title}
             </button>
           </a>
         </div>
-        <div className="RenovationSection-image">
+        <div className={styles.RenovationSectionImage}>
         <img
   src={url}
   alt={alt}

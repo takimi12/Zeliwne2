@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Featured.module.scss";
 
 const Featured = ({ data }) => {
 
@@ -9,10 +10,10 @@ const Featured = ({ data }) => {
   };
 
   return (
-    <section className="Featured" style={sectionStyle}>
-      <div className="text-center-setting">
-        <h3 className="display-second">{data.title}</h3>
-        <button className="button">
+    <section className={styles.featured} style={sectionStyle}>
+      <div className={styles.textCenterSetting}>
+        <h1 className={`${styles.text} h1big`}>{data.title}</h1>
+        <button className={styles.button}>
           <a href={data.link.url} target={data.link.target}>
             {data.link.title}
           </a>

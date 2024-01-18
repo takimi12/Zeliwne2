@@ -37,10 +37,10 @@ const Renovation = () => {
     <>
       {data && (
         <>
-          {/* <Hero heroData={data.acf.hero} />
+          <Hero heroData={data.acf.hero} />
           <SimpleSteps simpleSteps={data.acf.simple_steps} />
           <Proces proces={data.acf.process} />
-          <Benefits benefits={data.acf.benefits}/> */}
+          <Benefits benefits={data.acf.benefits}/>
           <Form />
         </>
       )}
