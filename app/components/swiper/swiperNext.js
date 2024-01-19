@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSwiper } from 'swiper/react';
-import ArrowNext from "../../../public/static/ProductPage/next.svg";
 import Image from 'next/image';
 import styles from './Swiper.module.scss';
+import ArrowNext from "../../../public/static/components/ArrowNext.jsx";
 
 
 export const SwiperNext = () => {

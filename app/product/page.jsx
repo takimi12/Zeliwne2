@@ -8,7 +8,6 @@ const Produkt = () => {
   return (
     <Layout>
       <ProduktPage  />
-      <Series />
     </Layout>
   );
 };

@@ -5,13 +5,14 @@
 // Global styles
 @import '../../app/Footer/styles/Footer.scss';
 
-//Pages
-@import '../Renowacja/Renovation.scss';
-@import '../Opinie/styles/opinie.scss';
 
 
 
  .swiper-pagination-bullets {
+  display: none;
+  @media only screen and (max-width: 991px) {
+    display: block;
+  }
     bottom: 0!important;
     .swiper-pagination-bullet{
     border: 1px solid #244B55;

@@ -9,11 +9,13 @@ import styles from './Series.module.scss';
 import Link from 'next/link';
 import SwiperNav from './SwiperNav';
 
-function Series({ lastSegment2, seriesProp, prop }) {
+function Series({ lastSegment2, seriesProp, prop, lastSegment1 }) {
   const [categories, setCategories] = useState(null);
   const [lastSegment, setLastSegment] = useState(null);
   const [isAtBeginning, setIsAtBeginning] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
+
+  console.log(prop, 'prop');
 
   const handleReachEnd = () => {
     setIsAtBeginning(false);
@@ -28,33 +30,24 @@ function Series({ lastSegment2, seriesProp, prop }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (lastSegment2 == undefined || null) {
-          const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wc/v3/products/categories?per_page=100', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Basic ' + btoa('ck_333c63c1676df66d84322191922b725ba3dc7f1e:cs_85c7bc717de01741a71ad8dc9152986569b62cec')
-            },
-          });
-          const result = await response.json();
+        const response = await fetch('https://grzejniki2.ergotree.pl/wp-json/wc/v3/products/categories?per_page=100', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa('ck_333c63c1676df66d84322191922b725ba3dc7f1e:cs_85c7bc717de01741a71ad8dc9152986569b62cec')
+          },
+        });
+        const result = await response.json();
 
-          const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
-          setCategories(filteredCategories);
-        } else if (lastSegment2) {
-          const response = await fetch("https://grzejniki2.ergotree.pl/wp-json/wc/v3/products/categories?per_page=100", {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Basic ' + btoa('ck_333c63c1676df66d84322191922b725ba3dc7f1e:cs_85c7bc717de01741a71ad8dc9152986569b62cec')
-            },
-          });
-          const result = await response.json();
+        const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
+        setCategories(filteredCategories);
 
-          const filteredCategories = result.filter(category => category.parent == lastSegment2);
-          setCategories(filteredCategories);
-
-          const filteredLastSegment = result.filter(category => category.id == lastSegment2);
+        if (lastSegment2) {
+          const filteredLastSegment = result.filter(category => category.id === lastSegment2);
           setLastSegment(filteredLastSegment);
+
+          const filteredCategories = result.filter(category => category.parent === lastSegment2);
+          setCategories(filteredCategories);
         }
       } catch (error) {
         // Handle error
@@ -76,36 +69,20 @@ function Series({ lastSegment2, seriesProp, prop }) {
               className={styles.swiperClass}
               wrapperClass={styles.wrapperClass}
               breakpoints={{
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 40,
-                },
-                991: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-                1199: {
-                  slidesPerView: 4,
-                  spaceBetween: 40,
-                },
+                640: { slidesPerView: 2, spaceBetween: 30 },
+                768: { slidesPerView: 2, spaceBetween: 40 },
+                991: { slidesPerView: 3, spaceBetween: 40 },
+                1199: { slidesPerView: 4, spaceBetween: 40 },
               }}
               onReachEnd={handleReachEnd}
               onReachBeginning={handleReachBeginning}
             >
               <div className={styles.topParent}>
-                {prop !== null ? (
+                {prop !== null && prop !== undefined ? (
                   <h4>Kategorie Produktów</h4>
                 ) : (
                   <>
-                    {lastSegment2 == null || lastSegment2 === undefined ? (
-                      <h4>Pozostałe Kategorie</h4>
-                    ) : (
-                      <h4>Pozostałe serie</h4>
-                    )}
+                    {lastSegment2 ? <h4>Pozostałe serie</h4> : <h4>Pozostałe Kategorie</h4>}
                   </>
                 )}
                 <div className={styles.arrowParent}>

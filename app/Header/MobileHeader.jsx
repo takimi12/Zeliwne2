@@ -79,13 +79,16 @@ const MobileHeader = ({ categories }) => {
     <>
       <div className={`${headerParentClasses} ${scrolled ? styles.scroll : ''}`}>
         <div className={styles.inner}>
+        <Link href='/'>
           <div className={styles.icons}>
+            
             <Logo className={` ${scrolled ? styles.secondColor : ''}`} />
             <WhiteHamburger
               className={` ${scrolled ? styles.secondColor : ''}`}
               onClick={handleHamburgerClick}
             />
           </div>
+          </Link>
         </div>
       </div>
 
@@ -114,7 +117,7 @@ const MobileHeader = ({ categories }) => {
                         className={styles.categoryMenu} key={category.title}
                         onClick={handleProduktyClick}
                       >
-                        <Link href={category.url}>
+                        <Link href={`/${category.title}`}>
                           <h3 className={styles.heading3}>
                             {category.title}
                           </h3>
@@ -167,7 +170,7 @@ const MobileHeader = ({ categories }) => {
                     <div className={styles.parentSecondLevel}>
                       {category.children.map(subCategory => (
                         <div className={styles.categoryMenu} key={subCategory.title}>
-                          <Link href={subCategory.url}>
+                          <Link href={`/Produkty/${subCategory.product_id}`}>
                             <h3>
                               {subCategory.title}
                             </h3>

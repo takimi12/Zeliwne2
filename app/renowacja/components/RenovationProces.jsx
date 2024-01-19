@@ -1,29 +1,30 @@
 'use client';
 import React from "react";
 import Image from "next/image";
+import styles from "./RenovationProces.module.scss";
 
 const RenovationProces = ({ proces }) => {
   const { title, process_steps } = proces;
 
   return (
     <>
-      <section className="RenovationPageInfo">
-        <h4 className="MainSectionHeading h4">{title}</h4>
-        <div className="ColWrapper">
+      <section className={styles.renovationPageInfo}>
+        <h4 className={styles.heading}>{title}</h4>
+        <div className={styles.colWrapper}>
           {process_steps.map((step, index) => (
-            <div className="col-6" key={index}>
-              <div className="foto">
-                <img className="photo-section" 
+            <div className={styles.col6} key={index}>
+              <div className={styles.foto}>
+                <img className={styles.photoSection} 
                 src={step.process_image.url} 
                 alt="leeerob"
                 fill={true}
                 />
               </div>
-              <div className="text">
-                <div className="inner-text">
-                  <p className="SmallHeading body-small-bigger">{step.step}</p>
-                  <h5 className="MainHeading h5">{step.step_title}</h5>
-                  <h6 className="h6-400">{step.step_text}</h6>
+              <div className={styles.text}>
+                <div className={styles.innerText}>
+                  <p className="p138" >{step.step}</p>
+                  <h5>{step.step_title}</h5>
+                  <p className="p15" >{step.step_text}</p>
                 </div>
               </div>
             </div>

@@ -13,9 +13,9 @@ import Advantages from "../components/Advantages";
 import { SwiperPrev } from "@/app/components/swiper/swiperPrev";
 import { SwiperNext } from "@/app/components/swiper/swiperNext";
 
-import car from "../../../public/static/ProductPage/cardeliver.svg";
-import telephone from "../../../public/static/ProductPage/telephonepage.svg";
-import post from "../../../public/static/ProductPage/postproductpage.svg";
+import Telephone from "../../../public/static/ProductPage/telephonepage.jsx";
+import Car from '../../../public/static/ProductPage/Car.jsx';
+import Post from '../../../public/static/ProductPage/post.jsx';
 
 
 const ProductPageSingle = () => {
@@ -93,7 +93,7 @@ const ProductPageSingle = () => {
               <Swiper
                 spaceBetween={10}
                 slidesPerView={1}
-                className={`${styles.swiper} mySwiper`}
+                className={`${styles.swiper} `}
                 pagination={{ clickable: true }}
                 onSlideChange={(swiper) => setCurrentSlide(swiper.activeIndex)}
               >
@@ -171,23 +171,23 @@ const ProductPageSingle = () => {
 
                 <div className={styles.buttonWrapper}>
                   <button type="button" data-button="true">
-                    <span className="button-text-big">Skontaktuj się</span>
+                    <span className="">Skontaktuj się</span>
                   </button>
                 </div>
 
                 <div className={styles.time}>
-                  <Image width={30} height={30} src={car} alt="Logo" />
-                  <p className="body-small-smaller-second">Dostawa: 6 - 8 tygodni</p>
+                          <Car />
+                  <p className="p15">Dostawa: 6 - 8 tygodni</p>
                 </div>
 
                 <div className={styles.wrapperDelivery}>
                   <div className={styles.delivery}>
-                    <Image width={20} height={20} src={telephone} alt="Logo" />
-                    <p className="body-small-smaller-second">123123123</p>
+                    <Telephone />
+                    <p className="p15">123123123</p>
                   </div>
                   <div className={styles.delivery}>
-                    <Image width={20} height={20} src={post} alt="Logo" />
-                    <p className="body-small-smaller-second">test@test.pl</p>
+                      <Post />
+                    <p className="p15">test@test.pl</p>
                   </div>
                 </div>
               </div>

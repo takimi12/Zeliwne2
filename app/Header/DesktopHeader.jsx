@@ -45,10 +45,10 @@ const Header = ({categories}) => {
 
 
 
-    if (segments.includes('produkty') || segments.includes('renowacja') || segments.includes('Opinie') || segments.includes('kontakt')|| segments.includes('product')) {
+    if (segments.includes('Produkty') || segments.includes('Renowacja') || segments.includes('Opinie') || segments.includes('Kontakt')|| segments.includes('product')) {
       setLogoImage(275);
     } 
-    if (segments.includes('produkty') && segments.length === 3) {
+    if (segments.includes('Produkty') && segments.length === 3) {
       // Obsługa przypadku "produkty"
       setLogoImage(0);
     } 
@@ -67,16 +67,16 @@ const Header = ({categories}) => {
 
   const currentPath = window.location.pathname;
   let segments = currentPath.split('/').filter(segment => segment !== '');
-  if (  segments.includes('renowacja') || segments.includes('Opinie') || segments.includes('kontakt') || segments.includes('product')) {
+  if (  segments.includes('Renowacja') || segments.includes('Opinie') || segments.includes('Kontakt') || segments.includes('product')) {
     headerParentClasses = `${styles.headerParent1} `;
 
   }
 
-  if (segments.includes('produkty') && segments.length === 2) {
+  if (segments.includes('Produkty') && segments.length === 2) {
     // Obsługa przypadku "produkty"
     headerParentClasses = `${styles.headerParent1} `;
   } 
-  if (segments.includes('produkty') && segments.length === 1) {
+  if (segments.includes('Produkty') && segments.length === 1) {
     // Obsługa przypadku "produkty"
     headerParentClasses = `${styles.headerParent1} `;
   } 
@@ -108,6 +108,7 @@ const Header = ({categories}) => {
     // Add any other logic you want to execute on mouse enter
   };
 
+  console.log(filteredCategories, 'filteredCategories');
 
 
   return (
@@ -120,16 +121,17 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
     <div className={(isScrolled ? styles.mainWrapper: styles.mainWrapperScroll)}
 
     >
-    {LogoImage || isScrolled || elementMenu == 275  ? 
-   (
+    {LogoImage || isScrolled || elementMenu === 275 ? (
+  <Link href="/">
     <div onMouseEnter={() => setElementMenu(0)}>
-        <SecondLogo />
+      <SecondLogo />
     </div>
-    ) : (
-    <div>
-        <Logo />
-    </div>
-    )}
+  </Link>
+) : (
+  <div>
+    <Logo />
+  </div>
+)}
     <div className={styles.header}>
       
       <ul className={styles.menu}>
@@ -140,9 +142,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
                   className={ isScrolled || elementMenu == 275 ? styles.second : '' }
                   onMouseEnter={() => MouseEnterElementMenu(category.product_id,)}
                     
-                   href={category.url}>
-                    
-                   
+                   href={`/${category.title}`}>
                     
                       {category.title}
                     
@@ -153,12 +153,12 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
 
       {/* Separate rendering for "Kontakt" category */}
       {kontaktCategory && (
-        <div className={styles.menu}>
-          <Link href={kontaktCategory.url}
+        <div className={`${styles.menu} ${styles.kontaktDesktop}`}>
+          <Link href={kontaktCategory.title}
                   className={ isScrolled || elementMenu == 275 ? styles.second : '' }
+          
           >
-            
-              {kontaktCategory.title}
+            Skontaktuj się z nami
             
           </Link>
         </div>
@@ -176,7 +176,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
                   <div className={styles.parentSecondLevel}>
                     {category.children.map(subCategory => (
                       <div  key={subCategory.title} >
-                        <Link href={subCategory.url}>
+                        <Link href={`/Produkty/${subCategory.product_id}`}>
                           <p 
                           className={`${subCategory.product_id} `}
                           onMouseEnter={() => MouseEnterElementMenu1(subCategory.product_id)}
@@ -215,7 +215,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
                           {subCategory.children.map(thirdLevelCategory => (
                             <div>
                             
-                              <Link href={thirdLevelCategory.url}>
+                              <Link href={`/Produkty/${subCategory.product_id}/${thirdLevelCategory.product_id}`}>
                               <p 
       onMouseEnter={() => MouseEnterElementMenu2(thirdLevelCategory.product_id)}
       className={styles.unactive}

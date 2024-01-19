@@ -6,11 +6,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import Image from "next/image";
+import styles from  './AdsTop.module.scss'
+
 
 const RenovationAdsBottom = ({ simpleSteps }) => {
 
   const breakpoints = {
-    600: {
+    1: {
       slidesPerView: 1,
     },
     700: {
@@ -32,25 +34,26 @@ const RenovationAdsBottom = ({ simpleSteps }) => {
   };
 
   return (
-    <section className="RenovationPageInfoAdvantages">
-      <h4 className="RenovationMainHeading h4">{simpleSteps.heading}</h4>
-      <div className="RenovationPageInfoParentWrapper">
+    <section className={styles.renovationPageInfoAdvantages}>
+      <h3 className={styles.heading}>{simpleSteps.heading}</h3>
+      <div className={styles.renovationPageInfoParentWrapper}>
         <Swiper
           spaceBetween={20}
           slidesPerView={4}
           slidesOffsetBefore={40}
+          wrapperClass={styles.wrapperClass}
           pagination={pagination}
           modules={[Pagination]}
-          className="mySwiper"
+          className={styles.swiper}
           breakpoints={breakpoints}
         >
           {simpleSteps.steps.map((step, index) => (
-            <SwiperSlide key={index}>
-              <div className="RenovationPageInfoParent">
-                <div>
+            <SwiperSlide key={index} className={styles.slide}>
+              <div className={styles.renovationPageInfoParent}>
+                <div className={styles.slides}>
                   <img src={step.icon.url} alt={step.icon.alt} width={step.icon.width} height={step.icon.height} />
-                  <h6 className="h6-600">{step.bold}</h6>
-                  <h6 className="h6">{step.text}</h6>
+                  <p className={`p15six ${styles.middleText}`}>{step.bold}</p>
+                  <p className={`p15 ${styles.bottomText}`}>{step.text}</p>
                 </div>
               </div>
             </SwiperSlide>

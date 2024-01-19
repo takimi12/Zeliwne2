@@ -21,6 +21,7 @@ const ProductOneCategorySub = () => {
   let segments = currentPath.split('/').filter(segment => segment !== '');
   let lastSegment3 = segments[segments.length - 3];
   let lastSegment2 = segments[segments.length - 2];
+  let lastSegment1 = segments[segments.length - 1];
 
   useEffect(() => {
     const currentPath = window.location.pathname;
@@ -118,7 +119,7 @@ const ProductOneCategorySub = () => {
 ))}
       
       </section>
-      <Series  lastSegment2={lastSegment2}/>
+      <Series  lastSegment2={lastSegment2} lastSegment1={lastSegment1}/>
     </>
   );
 };
