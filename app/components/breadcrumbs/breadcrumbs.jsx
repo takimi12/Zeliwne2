@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import prev from '../../../public/static/Header/Basic-icons.svg';
+import Prev from '../../../public/static/Header/Prev.jsx';
 import styles from './Breadcrumbs.module.scss';
 import { ReactSVG } from 'react-svg';
 import Image from 'next/image';
@@ -10,7 +10,7 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
   const pathnames = [lastSegment, lastSegmentProp, lastSegment1, lastSegment3].filter(Boolean);
 
   return (
-    <section className={styles.sectionBreadcrumbs}>
+
       <div className={styles.locations}>
         <p className={`p13 ${styles.color}`}>
           <Link className={styles.color} href="/">
@@ -22,7 +22,7 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
           return (
             <React.Fragment key={name}>
               <span className={styles.breadcrumb}>
-                <Image src={prev} />
+              <Prev />
               </span>
               <p className={`p13 ${styles.color}`}>
                 <Link className={styles.color} href={routeTo}>
@@ -33,16 +33,16 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
               {firstIndex !== undefined && secondIndex !== undefined && (
                 <React.Fragment>
                   <span className={styles.breadcrumb}>
-                    <Image src={prev} />
+                  <Prev />
                   </span>
                   <p className={`p13 ${styles.color}`}>
                     {/* Assuming lastSegment2 is a string representing the URL */}
-                    <Link className={styles.color} href={`/produkty/${lastSegment2}`}>
+                    <Link className={styles.color} href={`/Produkty/${lastSegment2}`}>
                       {secondIndex}
                     </Link>
                   </p>
                   <span className={styles.breadcrumb}>
-                    <Image src={prev} />
+                    <Prev />
                   </span>
                   <p className={`p13 ${styles.color}`}>
                     {/* Assuming firstIndex is a string representing the URL */}
@@ -56,7 +56,7 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
           );
         })}
       </div>
-    </section>
+   
   );
 }
 

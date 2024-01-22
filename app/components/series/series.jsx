@@ -15,7 +15,6 @@ function Series({ lastSegment2, seriesProp, prop, lastSegment1 }) {
   const [isAtBeginning, setIsAtBeginning] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
-  console.log(prop, 'prop');
 
   const handleReachEnd = () => {
     setIsAtBeginning(false);
@@ -42,11 +41,11 @@ function Series({ lastSegment2, seriesProp, prop, lastSegment1 }) {
         const filteredCategories = result.filter(category => category.parent === 0 && category.name !== "Bez kategorii");
         setCategories(filteredCategories);
 
-        if (lastSegment2) {
-          const filteredLastSegment = result.filter(category => category.id === lastSegment2);
+        if (lastSegment2 !== undefined && lastSegment2 !== null) {
+          const filteredLastSegment = result.filter(category => category.id == lastSegment2);
           setLastSegment(filteredLastSegment);
 
-          const filteredCategories = result.filter(category => category.parent === lastSegment2);
+          const filteredCategories = result.filter(category => category.parent == lastSegment2);
           setCategories(filteredCategories);
         }
       } catch (error) {

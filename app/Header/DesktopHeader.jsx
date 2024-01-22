@@ -14,7 +14,7 @@ const Header = ({categories}) => {
   const [isScrolled, setIsScrolled] = useState(0);
   const [headerclass, setheaderclass] = useState(0);
 
-  // ... existing code ...
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +64,7 @@ const Header = ({categories}) => {
 
 
   let headerParentClasses = `${styles.headerParent} ${isScrolled ? styles.scroll : ''}`;
+  let kontaktmainClass = `${styles.kontaktDesktop} ${isScrolled ? styles.kontaktDesktop1: ''}`;
 
   const currentPath = window.location.pathname;
   let segments = currentPath.split('/').filter(segment => segment !== '');
@@ -108,7 +109,7 @@ const Header = ({categories}) => {
     // Add any other logic you want to execute on mouse enter
   };
 
-  console.log(filteredCategories, 'filteredCategories');
+
 
 
   return (
@@ -124,12 +125,12 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
     {LogoImage || isScrolled || elementMenu === 275 ? (
   <Link href="/">
     <div onMouseEnter={() => setElementMenu(0)}>
-      <SecondLogo />
+    <SecondLogo />
     </div>
   </Link>
 ) : (
   <div>
-    <Logo />
+<Logo />
   </div>
 )}
     <div className={styles.header}>
@@ -153,7 +154,8 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
 
       {/* Separate rendering for "Kontakt" category */}
       {kontaktCategory && (
-        <div className={`${styles.menu} ${styles.kontaktDesktop}`}>
+        
+        <div className={`${kontaktmainClass} ${styles.menu} `}>
           <Link href={kontaktCategory.title}
                   className={ isScrolled || elementMenu == 275 ? styles.second : '' }
           

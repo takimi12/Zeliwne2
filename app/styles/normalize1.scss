@@ -1,0 +1,175 @@
+/* Typography */
+$font-family: 'Plus Jakarta Sans', sans-serif;
+$line-height-base: 1.45;
+
+// Colors
+$black-500: #252727;
+$black-400: #3C3E3E;
+$black-300: #525555;
+
+$grey-700: #484C4D;
+$grey-600: #606566;
+$grey-500: #787E80;
+$grey-400: #939899;
+$grey-300: #AEB2B3;
+$grey-200: #C9CBCC;
+$grey-100: #E4E5E6;
+
+$turquoise-700: #162D33;
+$turquoise-600: #1D3C44;
+$turquoise-500: #244B55;
+$turquoise-400: #39636E;
+$turquoise-300: #4F7B86;
+$turquoise-200: #64929F;
+$turquoise-100: #7AAAB7;
+
+$brown-700: #582712;
+$brown-600: #763418;
+$brown-500: #93411F;
+$brown-400: #A55A3A;
+$brown-300: #B77356;
+$brown-200: #C98C71;
+$brown-100: #DBA58D;
+
+$light-brown-700: #A1644C;
+$light-brown-600: #BC795F;
+$light-brown-500: #D88E71;
+$light-brown-400: #E0A58D;
+$light-brown-300: #E8BBAA;
+$light-brown-200: #EFD2C6;
+$light-brown-100: #F7E8E3;
+
+$beige-700: #C4B2A1;
+$beige-600: #D6C9BD;
+$beige-500: #E9E0D8;
+$beige-400: #EDE6E0;
+$beige-300: #F2ECE8;
+$beige-200: #F6F3EF;
+$beige-100: #FBF9F7;
+
+// Base styles
+%base-style {
+  font-family: $font-family;
+  font-style: normal;
+}
+
+// Heading styles
+%heading-style {
+  font-weight: 500;
+  line-height: $line-height-base;
+  letter-spacing: -0.02em;
+}
+
+h1, .display1 {
+  @extend %base-style;
+  @extend %heading-style;
+  font-size: 72px;
+  color: $black-500;
+}
+
+h2 {
+  @extend %base-style;
+  @extend %heading-style;
+  font-size: 42px;
+  color: $black-500;
+}
+
+h3, h4, h5, h6 {
+  @extend %base-style;
+  @extend %heading-style;
+}
+
+h3 { font-size: 32px; }
+h4 { font-size: 27px; }
+h5 { font-size: 22px; color: #101010; }
+h6 { font-size: 15px; color: #101010; }
+
+// Text styles
+%text-style {
+  font-weight: 400;
+  line-height: $line-height-base;
+}
+
+.big-text, .body, .body-small, .caption, .NavLink, .button, .eyebrow-header {
+  @extend %base-style;
+  @extend %text-style;
+}
+
+.big-text { font-size: 17px; color: $black-500; }
+.body { font-size: 15px; color: $black-500; }
+.body-small { font-size: 13px; text-align: center; }
+.caption { font-size: 11px; text-align: center; color: $black-500; letter-spacing: 0.03em; }
+
+.NavLink, .button, .eyebrow-header {
+  font-weight: 500;
+  letter-spacing: 0.15px;
+}
+
+.eyebrow-header {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+
+/* Colors */
+$color-light-grey-100: #FAFAFA;
+
+h1 {
+  color: var(--Light-grey-100, $color-light-grey-100);
+}
+
+.fill {
+  fill: var(--Black-500, $black-500);
+  fill: var(--Black-400, $black-400);
+  fill: var(--Black-300, $black-300);
+}
+
+.fill {
+  fill: var(--Grey-700, $grey-700);
+  fill: var(--Grey-600, $grey-600);
+  fill: var(--Grey-500, $grey-500);
+  fill: var(--Grey-400, $grey-400);
+  fill: var(--Grey-300, $grey-300);
+  fill: var(--Grey-200, $grey-200);
+  fill: var(--Grey-100, $grey-100);
+}
+
+.fill {
+  fill: var(--Turquoise-700, $turquoise-700);
+  fill: var(--Turquoise-600, $turquoise-600);
+  fill: var(--Turquoise-500, $turquoise-500);
+  fill: var(--Turquoise-400, $turquoise-400);
+  fill: var(--Turquoise-300, $turquoise-300);
+  fill: var(--Turquoise-200, $turquoise-200);
+  fill: var(--Turquoise-100, $turquoise-100);
+}
+
+.fill {
+  fill: var(--Brown-700, $brown-700);
+  fill: var(--Brown-600, $brown-600);
+  fill: var(--Brown-500, $brown-500);
+  fill: var(--Brown-400, $brown-400);
+  fill: var(--Brown-300, $brown-300);
+  fill: var(--Brown-200, $brown-200);
+  fill: var(--Brown-100, $brown-100);
+}
+
+.fill {
+  fill: var(--Light-Brown-700, $light-brown-700);
+  fill: var(--Light-Brown-600, $light-brown-600);
+  fill: var(--Light-Brown-500, $light-brown-500);
+  fill: var(--Light-Brown-400, $light-brown-400);
+  fill: var(--Light-Brown-300, $light-brown-300);
+  fill: var(--Light-Brown-200, $light-brown-200);
+  fill: var(--Light-Brown-100, $light-brown-100);
+}
+
+.fill {
+  fill: var(--Beige-700, $beige-700);
+  fill: var(--Beige-600, $beige-600);
+  fill: var(--Beige-500, $beige-500);
+  fill: var(--Beige-400, $beige-400);
+  fill: var(--Beige-300, $beige-300);
+  fill: var(--Beige-200, $beige-200);
+  fill: var(--Beige-100, $beige-100);
+}

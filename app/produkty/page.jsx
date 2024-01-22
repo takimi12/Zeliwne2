@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Produkty.module.scss';
 import Link from 'next/link';
-import Series from '../../app/components/series/series.jsx';
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 
 const Products = () => {
@@ -12,7 +11,7 @@ const Products = () => {
 
   const currentPath = window.location.pathname;
   let segments = currentPath.split('/').filter(segment => segment !== '');
-  let lastSegment = segments[segments.length - 1].toLowerCase();
+  let lastSegment = segments[segments.length - 1];
 
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const Products = () => {
       {categories && categories.map(category => (
 
         <div className={styles.productsWrapper} key={category.id}>
-        <Link href={`/produkty/${category.id}`}>
+        <Link href={`/Produkty/${category.id}`}>
 
           {category.image && category.image.src && (
             <img src={category.image.src} alt={category.image.alt} className={styles.categoryImage} />

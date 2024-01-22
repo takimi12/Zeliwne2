@@ -12,6 +12,8 @@ import Series from '../components/series/series';
 const HomeLayout = () => {
   const [data, setData] = useState(null);
   
+console.log(data, 'homepage')
+
   let prop = 1;
 
   useEffect(() => {
