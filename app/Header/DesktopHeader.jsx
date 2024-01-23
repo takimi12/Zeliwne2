@@ -215,7 +215,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
 
 
                           {subCategory.children.map(thirdLevelCategory => (
-                            <div>
+                            <div key={thirdLevelCategory.id}>
                             
                               <Link href={`/Produkty/${subCategory.product_id}/${thirdLevelCategory.product_id}`}>
                               <p 
@@ -258,7 +258,7 @@ className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : 
                   {subCategory.children && (
                     <ul>
                       {subCategory.children.map(thirdLevelCategory => (
-                        <li className={`${styles.headerImageli} ${elementMenu2 === thirdLevelCategory.product_id ? styles.activeImage : styles.unActiveImage}`}>
+                        <li key={thirdLevelCategory.id} className={`${styles.headerImageli} ${elementMenu2 === thirdLevelCategory.product_id ? styles.activeImage : styles.unActiveImage}`}>
                           <img
                             className={styles.headerImage}
                             src={thirdLevelCategory.thumbnail}

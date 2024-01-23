@@ -91,7 +91,7 @@ const ProductOneCategorySub = () => {
    </section>
    <section className={styles.sectionProduct}>
    {mappedCategories && mappedCategories.map(mappedCategory => (
-    <div className={styles.settingWidth}>
+    <div className={styles.settingWidth} key={mappedCategory.id}>
   <Link 
     href={`/product/${mappedCategory.id}`}
     key={mappedCategory.name}
