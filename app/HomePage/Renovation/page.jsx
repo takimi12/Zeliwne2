@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
 import Image from "next/image";
-import styles from "./renovation.module.scss";
+import styles from "./Renovation.module.scss";
 
 const RenovationSection = ({ data }) => {
 

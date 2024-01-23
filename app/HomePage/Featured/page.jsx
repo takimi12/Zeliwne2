@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import styles from "./featured.module.scss";
+import styles from "./Featured.module.scss";
 
 const Featured = ({ data }) => {
 
