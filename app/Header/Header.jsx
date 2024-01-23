@@ -4,8 +4,9 @@ import DefaultHeader from './DesktopHeader';
 import MobileHeader from './MobileHeader';
 
 const Header = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const [isMobile, setIsMobile] = useState(false);
   const [categories, setCategories] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,6 +31,8 @@ const Header = () => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 900);
     };
+
+    handleResize(); // Dodane, aby określić początkową wartość isMobile po załadowaniu strony
 
     window.addEventListener('resize', handleResize);
 

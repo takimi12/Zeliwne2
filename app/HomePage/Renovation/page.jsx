@@ -1,38 +1,56 @@
+'use client';
 import React from "react";
 import Image from "next/image";
-import styles from "./Renovation.module.scss";
+import styles from "./renovation.module.scss";
 
 const RenovationSection = ({ data }) => {
-  const {
-    small_title,
-    title,
-    description,
-    link,
-    image: { url, alt, sizes },
-  } = data;
+
+  const mapData = () => {
+    const mappedData = {
+      small_title: data.small_title,
+      title: data.title,
+      description: data.description,
+      link: {
+        title: data.link.title,
+        url: data.link.url,
+        target: data.link.target,
+      },
+      image: {
+        url: data.image.url,
+        alt: data.image.alt,
+        sizes: data.image.sizes,
+      },
+    };
+
+    return mappedData;
+  };
+
+  const mappedData = mapData();
 
   return (
     <section className={styles.renovationSection}>
       <div className={styles.renovationSectionContent}>
         <div className={styles.renovationSectionText}>
           <div className={styles.renovationSectionTitle}>
-            <p className="p138">{small_title}</p>
+            <p className="p138">{mappedData.small_title}</p>
           </div>
-          <h1 className={`${styles.renovationSectionHeading} h1big`}>{title}</h1>
-          <div className={styles.renovationSectionDescription}><p className="p15">{description}</p></div>
-          <a href={link.url} target={link.target} rel="noopener noreferrer">
+          <h1 className={`${styles.renovationSectionHeading} h1big`}>{mappedData.title}</h1>
+          <div className={styles.renovationSectionDescription}>
+            <p className="p15">{mappedData.description}</p>
+          </div>
+          <a href={mappedData.link.url} target={mappedData.link.target} rel="noopener noreferrer">
             <button className={`${styles.renovationSectionButton} button`} type="button">
-              {link.title}
+              {mappedData.link.title}
             </button>
           </a>
         </div>
         <div className={styles.RenovationSectionImage}>
-        <img
-  src={url}
-  alt={alt}
-  layout="fill"
-  objectFit="cover" // lub inne dostępne wartości
-/>
+          <img
+            src={mappedData.image.url}
+            alt={mappedData.image.alt}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
       </div>
     </section>

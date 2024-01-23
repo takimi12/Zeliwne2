@@ -103,8 +103,6 @@ const SectionSwiper = ({data}) => {
                 <img
                   src={inspiration.image.link}
                   alt={inspiration.image.title}
-                  layout="fill"
-                  objectFit="cover"
                 />
                 <div className={styles.hoverEffectDivInner}>
                   <Plus />

@@ -4,15 +4,14 @@ import Hero from './Hero/page';
 import Most from './MostPopular/page';
 import Inspiration from './Inspiration/page';
 import Box from './FutureSection/page';
-import Renovation from './Renovation/page';
+import Renovation from './renovation/page';
 import Opinion from './Opinion/page';
-import Featured from './Featured/page';
+import Featured from './featured/page';
 import Series from '../components/series/series';
 
 const HomeLayout = () => {
   const [data, setData] = useState(null);
-  
-console.log(data, 'homepage')
+
 
   let prop = 1;
 
