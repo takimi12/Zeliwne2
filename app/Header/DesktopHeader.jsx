@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import styles from './Header.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import kaloryfer from '../../public/static/Header/navikaloryfer.svg';
+import kaloryfer from '../../public/static/Header/Kaloryfer.jsx';
 import Logo from '../../public/static/Header/Logo.jsx';
 import SecondLogo from '../../public/static/Header/SecondLogo.jsx';
 import { useRouter } from 'next/navigation';
+import Kaloryfer from '../../public/static/Header/Kaloryfer.jsx';
 
 const Header = ({ categories }) => {
   const [isScrolled, setIsScrolled] = useState(0);
@@ -39,7 +40,7 @@ const Header = ({ categories }) => {
     if (segments.includes('Produkty') || segments.includes('Renowacja') || segments.includes('Opinie') || segments.includes('Kontakt') || segments.includes('product')) {
       setLogoImage(275);
     }
-    if (segments.includes('Produkty') && segments.length === 3) {
+    if (segments.includes('Produkty') && segments.length == 3) {
       setLogoImage(0);
     }
   }, [typeof window !== 'undefined' && window.location.pathname]);
@@ -58,11 +59,11 @@ const Header = ({ categories }) => {
     headerParentClasses = `${styles.headerParent1} `;
   }
 
-  if (segments.includes('Produkty') && segments.length === 2) {
+  if (segments.includes('Produkty') && segments.length == 2) {
     headerParentClasses = `${styles.headerParent1} `;
   }
 
-  if (segments.includes('Produkty') && segments.length === 1) {
+  if (segments.includes('Produkty') && segments.length == 1) {
     headerParentClasses = `${styles.headerParent1} `;
   }
 
@@ -91,9 +92,9 @@ const Header = ({ categories }) => {
 
   return (
     <>
-      <header onMouseLeave={MouseLeave} className={`${headerParentClasses} ${elementMenu === 275 ? styles.activeHeader : headerParentClasses}`}>
+      <header onMouseLeave={MouseLeave} className={`${headerParentClasses} ${elementMenu == 275 ? styles.activeHeader : headerParentClasses}`}>
         <div className={(isScrolled ? styles.mainWrapper : styles.mainWrapperScroll)}>
-          {logoImage || isScrolled || elementMenu === 275 ? (
+          {logoImage || isScrolled || elementMenu == 275 ? (
             <Link href="/">
               <div onMouseEnter={() => setElementMenu(0)}>
                 <SecondLogo />
@@ -110,7 +111,7 @@ const Header = ({ categories }) => {
                 filteredCategories.map(category => (
                   <li key={category.title}>
                     <Link
-                      className={isScrolled || elementMenu === 275 ? styles.second : ''}
+                      className={isScrolled || elementMenu == 275 ? styles.second : ''}
                       onMouseEnter={() => MouseEnterElementMenu(category.product_id)}
                       href={`/${category.title}`}
                     >
@@ -122,14 +123,14 @@ const Header = ({ categories }) => {
 
             {kontaktCategory && (
               <div className={`${kontaktmainClass} ${styles.menu} `}>
-                <Link href={kontaktCategory.title} className={isScrolled || elementMenu === 275 ? styles.second : ''}>
+                <Link href={kontaktCategory.title} className={isScrolled || elementMenu == 275 ? styles.second : ''}>
                   Skontaktuj się z nami
                 </Link>
               </div>
             )}
           </div>
-          {elementMenu === 275 && (
-            <div className={`${styles.secondLevel} ${elementMenu === 275 ? styles.active : styles.secondLevel}`}>
+          {elementMenu == 275 && (
+            <div className={`${styles.secondLevel} ${elementMenu == 275 ? styles.active : styles.secondLevel}`}>
               <div className={styles.secondLevelbelow}>
                 {filteredCategories &&
                   filteredCategories.map(category => (
@@ -194,7 +195,7 @@ const Header = ({ categories }) => {
               <div className={styles.headerMenu}>
                 {elementMenu2 === null ? (
                   <div>
-                    <Image src={kaloryfer} alt="Kaloryfer" />
+                    <Kaloryfer />
                   </div>
                 ) : (
                   <>
