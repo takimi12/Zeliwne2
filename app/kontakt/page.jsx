@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Form from "../components/Form/Form";
-import styles from "./Kontakt.module.scss";
+import styles from "./kontakt.module.scss";
 
 const Contact = () => {
   const [data, setData] = useState(null);

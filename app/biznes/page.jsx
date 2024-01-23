@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from "./Biznes.module.scss";
+import styles from "./biznes.module.scss";
 
 const ForBusiness = () => {
   const [data, setData] = useState(null);
