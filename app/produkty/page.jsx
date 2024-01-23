@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import styles from './produkty.module.scss';
+import styles from './Produkty.module.scss';
 import Link from 'next/link';
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 

@@ -4,7 +4,7 @@ import Hero from './Hero/page';
 import Most from './MostPopular/page';
 import Inspiration from './Inspiration/page';
 import Box from './FutureSection/page';
-import Renovation from './renovation/page';
+import Renovation from './Renovation/page';
 import Opinion from './Opinion/page';
 import Featured from './Featured/page';
 import Series from '../components/series/series';
