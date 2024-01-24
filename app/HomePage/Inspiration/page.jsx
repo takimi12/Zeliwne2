@@ -12,6 +12,7 @@ import styles from "./Inspiration.module.scss";
 import Plus from "@/public/static/Inspiration/Plus.jsx";
 import Prev from "../../components/swiper/Prev";
 import Next from "../../components/swiper/Next";
+import Arrow from "@/public/static/HomePage/Arrow";
 
 const SectionSwiper = ({ data }) => {
   const [showPopup, setShowPopup] = useState(false);
@@ -19,11 +20,9 @@ const SectionSwiper = ({ data }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedSlideIndex, setSelectedSlideIndex] = useState(0);
   const [isBottomSectionExpanded, setIsBottomSectionExpanded] = useState(false);
-  const [isConfigurationClicked, setIsConfigurationClicked] = useState(false);
   const [isAtBeginning, setIsAtBeginning] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
 
-  console.log(data, 'inspiration data');
 
   const handleReachEnd = () => {
     setIsAtBeginning(false);
@@ -50,20 +49,23 @@ const SectionSwiper = ({ data }) => {
     event.stopPropagation();
   };
 
-  const handleConfigurationClick = () => {
-    setIsConfigurationClicked(true);
-    setIsBottomSectionExpanded((prevState) => !prevState);
-    const buttonText = isBottomSectionExpanded ? "Konfiguracja" : "Zwiń";
-    document.querySelector(".clickunder900").textContent = buttonText;
+  const [isAbove900, setIsAbove900] = useState(window.innerWidth > 899);
+  const [isBelow900, setIsBelow900] = useState(window.innerWidth <= 899);
 
-    if (popupRef.current) {
-      if (!isBottomSectionExpanded) {
-        popupRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      } else {
-        popupRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  };
+  useEffect(() => {
+    const handleResize = () => {
+      setIsAbove900(window.innerWidth > 899);
+      setIsBelow900(window.innerWidth <= 899);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
 
   useEffect(() => {
     if (showPopup) {
@@ -80,6 +82,14 @@ const SectionSwiper = ({ data }) => {
       }
     }
   }, [showPopup, isBottomSectionExpanded]);
+
+
+  const [isConfigExpanded, setIsConfigExpanded] = useState(false);
+
+  const handleSwitcherClick = () => {
+    setIsConfigExpanded(!isConfigExpanded);
+  };
+
 
   return (
     <>
@@ -118,14 +128,16 @@ const SectionSwiper = ({ data }) => {
   <div ref={popupRef} className={styles.popupOverlay} onClick={closePopup}>
     <div className={styles.popup} onClick={handlePopupClick}>
       {selectedImage && (
+
+
         <div className={styles.popupContent}>
           <Swiper
             spaceBetween={20}
             slidesPerView={1}
             loop={true}
             slidesOffsetBefore={40}
-            className={styles.swiper}
-            wrapperClass={styles.wrapperClass}
+            className={`${isConfigExpanded ? styles.scroll : styles.swiper}`}
+            wrapperClass={styles.wrapperClass1}
          
           >
             <div className={styles.arrowWrapper}>
@@ -149,6 +161,7 @@ const SectionSwiper = ({ data }) => {
     />
   </SwiperSlide>
           </Swiper>
+          {isAbove900 && (
           <div className={styles.info}>
           <div className={styles.topInfoSection}>
                       <div className="buttoninnerWrapper">
@@ -186,21 +199,69 @@ const SectionSwiper = ({ data }) => {
                       <div className>
                         <button><a href="#">Zobacz produkt</a></button>
                       </div>
-                      <div className={styles.configurationUnder900} onClick={handleConfigurationClick}>
-                        <h6 className="h6-600 clickunder900">
-                          {isConfigurationClicked ? "Zwiń" : "Konfiguracja"}
-                        </h6>
-                        {/* <img className="popuparrow" src={arrow} alt="popuparrow" /> */}
-                      </div>
-
-
-
           </div>
+          )}
+  {isBelow900 && (
+    <>
+          <div className={styles.buttoninnerWrapper}>
+              <button className={styles.closeButton1} onClick={closePopup}>
+                X
+              </button>
+            </div>
+  <div             className={`${isConfigExpanded ? styles.mobileParentScroll : styles.mobileParent}`}>
+        <div className={styles.mobile}>
+    <div className>
+      <h5>{selectedImage.title} </h5>
+            <p className="p-13">Count Column: {selectedImage.count_column}</p>
+            <p className="p-13">Height: {selectedImage.height}</p>
+    </div>
+
+   <div className>
+   <button><a href="#">Zobacz produkt</a></button>
+ </div>
+
+
+ </div>
+ <div className={` ${styles.swipeContent}`}>
+
+<p className={`p15six ${styles.firstParagraph}`}>Konfiguracja ze zdjęcia</p>
+                       {selectedImage.config.map((configItem, index) => (
+                         <div className={styles.bottomInfosecttionText} key={index}>
+                           <div className={styles.photoWithText}>
+                             <div className={styles.photo}>
+                               <img src={configItem.image.url} alt='alt'
+                                 width={100}
+                                 height={100}
+                               />
+                             </div>
+                             <div className="text">
+                               <p className="body-small-bigger-third">{configItem.subtitle}</p>
+                               <p className="body-small-smaller-third">{configItem.value}</p>
+                             </div>
+                           </div>
+                         </div>
+                       ))}
+               
+
+ </div>
+ </div>
+
+  <div className={styles.mobileSwitcher} onClick={handleSwitcherClick}>
+            <p className="p15">{isConfigExpanded ? "Zwiń" : "Konfiguracja ze zdjęcia"}
+            {isConfigExpanded ? <span  ><Arrow className={styles.rotate}/></span> :  <span><Arrow /></span>}
+              </p>
+          </div>
+ </>
+   )}
+
         </div>
+        
       )}
     </div>
   </div>
+  
 )}
+
       </section>
     </>
   );
