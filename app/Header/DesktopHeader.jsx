@@ -13,6 +13,7 @@ const Header = ({ categories }) => {
   const [isScrolled, setIsScrolled] = useState(0);
   const [headerclass, setHeaderclass] = useState(0);
 
+  console.log(categories)
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = typeof window !== 'undefined' && window.scrollY > 100;
@@ -109,7 +110,7 @@ const Header = ({ categories }) => {
             <ul className={styles.menu}>
               {filteredCategories &&
                 filteredCategories.map(category => (
-                  <li key={category.title}>
+                  <li className={styles.anchorParent} key={category.title}>
                     <Link
                       className={isScrolled || elementMenu == 275 ? styles.second : ''}
                       onMouseEnter={() => MouseEnterElementMenu(category.product_id)}

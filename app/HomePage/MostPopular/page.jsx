@@ -8,10 +8,12 @@ import Image from 'next/image';
 import styles from './MostPopular.module.scss';
 import SwiperNav from '@/app/components/series/SwiperNav';
 import { useState } from 'react';
+import Link from 'next/link';
 
 function MostPopular({ data }) {
   const [isAtBeginning, setIsAtBeginning] = useState(true);
   const [isAtEnd, setIsAtEnd] = useState(false);
+console.log(data)
 
   const handleReachEnd = () => {
     setIsAtBeginning(false);
@@ -45,6 +47,8 @@ function MostPopular({ data }) {
 
           {data.map((item, index) => (
             <SwiperSlide className={styles.swiperSlide} key={index}>
+            <Link to href={`/product/${item.link_do_produktu.ID}`}>
+   
               <div className={styles.swiperSliderWrapper}>
                 <div className='SwipersSliderImage'>
                 <img
@@ -59,7 +63,9 @@ function MostPopular({ data }) {
                 <h6 className='h6-600'>{item.title}</h6>
                 <h6 className='h6-600'>{item.price}</h6>
               </div>
+              </Link>
             </SwiperSlide>
+           
           ))}
         </Swiper>
       </div>

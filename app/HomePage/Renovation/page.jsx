@@ -38,7 +38,7 @@ const RenovationSection = ({ data }) => {
           <div className={styles.renovationSectionDescription}>
             <p className="p15">{mappedData.description}</p>
           </div>
-          <a href={mappedData.link.url} target={mappedData.link.target} rel="noopener noreferrer">
+          <a href="/Renowacja" target={mappedData.link.target} rel="noopener noreferrer">
             <button className={`${styles.renovationSectionButton} button`} type="button">
               {mappedData.link.title}
             </button>

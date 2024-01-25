@@ -91,7 +91,7 @@ function Series({ lastSegment2, seriesProp, prop, lastSegment1 }) {
 
               {categories.map((category) => (
                 <SwiperSlide key={category.id} className={styles.slide}>
-                  <Link href={`/produkty/${category.id}`}>
+                  <Link href={`/Produkty/${category.id}`}>
                     {category.image && category.image.src && (
                       <img
                         src={category.image.src}

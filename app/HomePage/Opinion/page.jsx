@@ -9,6 +9,7 @@ import 'swiper/css/bundle';
 import 'swiper/css/pagination';
 import Image from "next/image";
 import styles from "./Opinion.module.scss";
+import Star from "@/public/static/HomePage/Star";
 
 const Clients = ({ data }) => {
 
@@ -41,7 +42,7 @@ const Clients = ({ data }) => {
         </div>
         <div className={styles.right}>
           <p className="p15">
-            <a className={styles.cta} href="/">
+            <a className={styles.cta} href="/Opinie">
               Zobacz wszystkie
             </a>
           </p>
@@ -58,7 +59,9 @@ const Clients = ({ data }) => {
           {data.map((opinion, index) => (
             <SwiperSlide key={index} className={styles.swiperSlide}>
               <div className={styles.clientOpinion}>
+
                 <div className={styles.clientOpinionWrapper}>
+                <div><Star /><Star /><Star /><Star /><Star /></div>
                 <p className="p15six">{opinion.subtitle}</p> 
                   <p className="p15">{opinion.content}</p>
  
