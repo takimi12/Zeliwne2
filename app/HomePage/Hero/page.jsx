@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./Hero.module.scss";
+import Link from "next/link";
 
 const Hero = ({ data1 }) => {
+  console.log(data1); 
 
   if (!data1 || !data1 || data1.length === 0) {
     return null;
@@ -21,12 +23,12 @@ const Hero = ({ data1 }) => {
             <div className={styles.textCenterSetting}>
               <span className="eyebrowheader">{heroItem.small_title}</span>
               <h1 className={styles.displaySecond}>{heroItem.title}</h1>
+              <Link href={heroItem.link.url}>
               <button
-                className="button h6-500"
-                onClick={() => window.location.href = heroItem.link.url}
-              >
+                className="button h6-500"              >
                 {heroItem.link.title}
               </button>
+              </Link>
             </div>
           </div>
         </section>

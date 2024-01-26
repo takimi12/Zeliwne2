@@ -24,6 +24,7 @@ const SectionSwiper = ({ data }) => {
   const [isAtEnd, setIsAtEnd] = useState(false);
 
 
+
   const handleReachEnd = () => {
     setIsAtBeginning(false);
     setIsAtEnd(true);
@@ -197,8 +198,10 @@ const SectionSwiper = ({ data }) => {
                         ))}
                       </div>
                       <div className>
-                        <button><a href="#">Zobacz produkt</a></button>
-                      </div>
+                      {selectedImage.relationship.map((relationship) => (
+                        <button><a href={`/product/${relationship.ID}`}>Zobacz produkt</a></button>
+                      ))}
+                        </div>
           </div>
           )}
   {isBelow900 && (
@@ -217,7 +220,9 @@ const SectionSwiper = ({ data }) => {
     </div>
 
    <div className>
-   <button><a href="#">Zobacz produkt</a></button>
+   {selectedImage.relationship.map((relationship) => (
+                        <button><a href={`/product/${relationship.ID}`}>Zobacz produkt</a></button>
+                      ))}
  </div>
 
 

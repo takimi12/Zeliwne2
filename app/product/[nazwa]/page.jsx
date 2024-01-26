@@ -16,6 +16,7 @@ import { SwiperNext } from "@/app/components/swiper/swiperNext";
 import Telephone from "../../../public/static/ProductPage/telephonepage.jsx";
 import Car from '../../../public/static/ProductPage/Car.jsx';
 import Post from '../../../public/static/ProductPage/post.jsx';
+import Link from 'next/link';
 
 
 const ProductPageSingle = () => {
@@ -170,9 +171,11 @@ const ProductPageSingle = () => {
                 <h4>{getMetaValue(products.meta_data, 'dopis_przy_cenie')}</h4>
 
                 <div className={styles.buttonWrapper}>
+                  <Link href="/Kontakt" >
                   <button type="button" data-button="true">
                     <span className="">Skontaktuj się</span>
                   </button>
+                  </Link>
                 </div>
 
                 <div className={styles.time}>

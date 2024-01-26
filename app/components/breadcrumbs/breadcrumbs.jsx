@@ -38,7 +38,7 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
                   <p className={`p13 ${styles.color}`}>
                     {/* Assuming lastSegment2 is a string representing the URL */}
                     <Link className={styles.color} href={`/Produkty/${lastSegment2}`}>
-                      {secondIndex}
+                      {firstIndex}
                     </Link>
                   </p>
                   <span className={styles.breadcrumb}>
@@ -47,7 +47,7 @@ function Breadcrumbs({ lastSegment, lastSegmentProp, lastSegment1, lastSegment2,
                   <p className={`p13 ${styles.color}`}>
                     {/* Assuming firstIndex is a string representing the URL */}
                     <Link className={styles.color} href={firstIndex}>
-                      {firstIndex}
+                      {secondIndex}
                     </Link>
                   </p>
                 </React.Fragment>

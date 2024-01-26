@@ -1,7 +1,6 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import Hero from "./components/RenovationColumn";
+'use client';
+import React, {  useEffect, useState } from "react";
+import Hero from "./components/Hero";
 import SimpleSteps from "./components/AdsTop";
 import Proces from "./components/RenovationProces";
 import Benefits from "./components/AdsBottom";
@@ -11,18 +10,13 @@ const Renovation = () => {
   const [data, setData] = useState(null);
 
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-     
-
         const response = await fetch(`https://grzejniki2.ergotree.pl/wp-json/wp/v2/pages/109`, {
           method: 'GET',
-      
         });
         const result = await response.json();
-
         setData(result);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -33,6 +27,7 @@ const Renovation = () => {
   }, []);
 
 
+
   return (
     <>
       {data && (
@@ -40,8 +35,8 @@ const Renovation = () => {
           <Hero heroData={data.acf.hero} />
           <SimpleSteps simpleSteps={data.acf.simple_steps} />
           <Proces proces={data.acf.process} />
-          <Benefits benefits={data.acf.benefits}/>
-          <Form />
+          <Benefits benefits={data.acf.benefits} />
+          <Form  />
         </>
       )}
     </>

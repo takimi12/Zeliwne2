@@ -2,9 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
-import styles from "./RenovationColumn.module.scss";
+import styles from "./Hero.module.scss";
+import {Link} from "react-scroll";
 
-const RenovationColumn = ({ heroData }) => {
+const Hero =({ heroData }) => {
   const { image, title, paragraph, button } = heroData;
 
 
@@ -18,11 +19,11 @@ const RenovationColumn = ({ heroData }) => {
               <div className={styles.renovationPageParagraph}>
                 <p className="p15">{paragraph}</p>
               </div>
-              <a href={button.url}>
+              <Link to="form" spy={true} smooth={true} offset={510} duration={1500} >
                 <button type="button" className="button-text-big">
                   {button.title}
                 </button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -37,4 +38,4 @@ const RenovationColumn = ({ heroData }) => {
   );
 };
 
-export default RenovationColumn;
+export default Hero ;

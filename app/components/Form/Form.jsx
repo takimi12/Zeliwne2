@@ -137,7 +137,7 @@ const ContactForm = ({formProp}) => {
 
   return (
     <>
-<div className={formProp ? styles.contactSection : styles.contactFormSection}>
+   <div id="form" className={formProp ? styles.contactSection : styles.contactFormSection}>
         <form className="contact-form" onSubmit={handleSubmit}>
         {formProp ? null : (
   <div>

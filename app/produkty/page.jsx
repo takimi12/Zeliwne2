@@ -7,6 +7,7 @@ import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 const Products = () => {
   const [categories, setCategories] = useState(null);
 
+
   useEffect(() => {
     const fetchData = async () => {
       try {

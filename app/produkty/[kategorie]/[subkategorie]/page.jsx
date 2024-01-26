@@ -11,8 +11,11 @@ const ProductOneCategorySub = () => {
   const [mappedCategories, setMappedCategories] = useState(null);
   const [lastSegment, setLastSegment] = useState(null);
   const [secondCategories, setsecondCategories] = useState(null);
+  const [test, setTest] = useState(null);
 
+  console.log(test, 'test')
 
+console.log(mappedCategories, 'mappedCategories')
  
   const namesArray = (secondCategories && secondCategories.flatMap(item => item.categories) || []).slice(0, 2).map(item => item.name);
   const [firstIndex, secondIndex] = namesArray;
@@ -46,6 +49,7 @@ const ProductOneCategorySub = () => {
           },
         });
         const result = await response.json();
+        setTest(result);
 
         const filteredCategories = result.filter(product => {
           const isIronRadiators = product.categories.some(category => category.id == lastSegment);

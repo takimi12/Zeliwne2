@@ -88,21 +88,35 @@ function Series({ lastSegment2, seriesProp, prop, lastSegment1 }) {
                   <SwiperNav first={isAtBeginning} last={isAtEnd} />
                 </div>
               </div>
-
-              {categories.map((category) => (
-                <SwiperSlide key={category.id} className={styles.slide}>
-                  <Link href={`/Produkty/${category.id}`}>
-                    {category.image && category.image.src && (
-                      <img
-                        src={category.image.src}
-                        alt={category.image.alt}
-                        className={styles.image}
-                      />
-                    )}
-                    <p className='p15sixx'>{category.name}</p>
-                  </Link>
-                </SwiperSlide>
-              ))}
+              {lastSegment2 ? (
+  categories.map((category) => (
+    <SwiperSlide key={category.id} className={styles.slide}>
+      <Link href={`/Produkty/${category.parent}/${category.id}`}>
+        {category.image && category.image.src && (
+          <img
+            src={category.image.src}
+            alt={category.image.alt}
+            className={styles.image}
+          />
+        )}
+        <p className='p15sixx'>{category.name}</p>
+      </Link>
+    </SwiperSlide>
+  ))
+) :   categories.map((category) => (
+  <SwiperSlide key={category.id} className={styles.slide}>
+    <Link href={`/Produkty/${category.id}`}>
+      {category.image && category.image.src && (
+        <img
+          src={category.image.src}
+          alt={category.image.alt}
+          className={styles.image}
+        />
+      )}
+      <p className='p15sixx'>{category.name}</p>
+    </Link>
+  </SwiperSlide>
+))}
             </Swiper>
           )}
         </div>

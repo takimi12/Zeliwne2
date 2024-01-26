@@ -1,6 +1,7 @@
 'use client';
 import React from "react";
 import styles from "./Featured.module.scss";
+import Link from "next/link";
 
 const Featured = ({ data }) => {
 
@@ -14,11 +15,12 @@ const Featured = ({ data }) => {
     <section className={styles.featured} style={sectionStyle}>
       <div className={styles.textCenterSetting}>
         <h1 className={`${styles.text} h1big`}>{data.title}</h1>
-        <button className={styles.button}>
-          <a href={data.link.url} target={data.link.target}>
+ <Link href={data.link.url}>        <button className={styles.button}>
+        
             {data.link.title}
-          </a>
+        
         </button>
+        </Link>
       </div>
     </section>
   );
